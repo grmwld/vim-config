@@ -10,9 +10,6 @@
 " |   ,b = fuzzy find in all buffers                                          |
 " |   ,p = go to previous file                                                |
 " |                                                                           |
-" |   hh = inserts '=>'                                                       |
-" |   aa = inserts '@'                                                        |
-" |                                                                           |
 " |   ,h = new horizontal window                                              |
 " |   ,v = new vertical window                                                |
 " |                                                                           |
@@ -32,6 +29,7 @@ filetype off
 set encoding=utf-8
 set laststatus=2
 set nocompatible
+set ttyfast
 "let mapleader = ","
 
 set rtp+=~/.vim/bundle/vundle/
@@ -68,7 +66,31 @@ Bundle 'garbas/vim-snipmate'
 Bundle 'honza/snipmate-snippets'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'vim-scripts/pythoncomplete'
+Bundle 'vim-scripts/Rainbow-Parenthesis'
 
+
+
+" Misc settings ***************************************************************
+inoremap jj <ESC>
+set backspace=indent,eol,start
+set matchpairs+=<:>
+set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
+set nofoldenable " Turn off folding 
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
+
+" Line numbering
+set relativenumber
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
+function! NumberToggle()
+    if(&relativenumber == 1)
+        set number
+    else
+        set relativenumber
+    endif
+endfunc
+nnoremap <C-n> :call NumberToggle()<cr>
 
 
 " Tabs ************************************************************************
@@ -80,7 +102,6 @@ function! Tabstyle_4()
   set shiftwidth=4
   set tabstop=4
   set expandtab
-"""""""""""""""""""""""""""""""""  set textwidth=79
 endfunction
 
 function! Tabstyle_2()
@@ -100,7 +121,7 @@ set si " smartindent (local to buffer)
 
 
 " Scrollbars ******************************************************************
-set sidescrolloff=2
+set sidescrolloff=5
 set numberwidth=4
 
 
@@ -109,13 +130,18 @@ set equalalways " Multiple windows, when created, are equal in size
 set splitbelow splitright
 
 " Vertical and horizontal split then hop to a new buffer
-:noremap <Leader>v :vsp^M^W^W<cr>
-:noremap <Leader>h :split^M^W^W<cr>
+:noremap <Leader>v :vsp<cr>
+:noremap <Leader>h :split<cr>
+" Move around split windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 
 " Cursor highlights ***********************************************************
 set cursorline
-"set cursorcolumn
+set cursorcolumn
 
 
 " Searching *******************************************************************
@@ -123,6 +149,9 @@ set hlsearch  " highlight search
 set incsearch  " Incremental search, search as you type
 set ignorecase " Ignore case when searching 
 set smartcase " Ignore case when searching lowercase
+set gdefault
+set showmatch
+nnoremap <leader><space> :noh<cr>
 
 
 " Colors **********************************************************************
@@ -141,6 +170,8 @@ colorscheme solarized
 
 " Status Line *****************************************************************
 set showcmd
+set wildmenu
+set wildmode=list:longest
 set ruler " Show ruler
 "set ch=2 " Make command line two lines high
 "match LongLineWarning '\%120v.*' " Error format when a line is longer than 120
@@ -150,8 +181,16 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 " Line Wrapping ***************************************************************
 set nowrap
 set linebreak  " Wrap at word
+set formatoptions=qrn1
+set colorcolumn=85
 
 
+" Persistant undo
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000 "maximum number of changes that can be undone
+set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+au FocusLost * :wa
 " Directories *****************************************************************
 " Setup backup location and enable
 "set backupdir=~/backup/vim
@@ -249,26 +288,23 @@ behave xterm
 "set selectmode=mouse
 
 
-" Misc settings ***************************************************************
-set backspace=indent,eol,start
-set number " Show line numbers
-set matchpairs+=<:>
-set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
-set nofoldenable " Turn off folding 
-
-
 " Navigation ******************************************************************
-
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
 " Make cursor move by visual lines instead of file lines (when wrapping)
-map <up> gk
 map k gk
 imap <up> <C-o>gk
-map <down> gj
 map j gj
 imap <down> <C-o>gj
 map E ge
 
 map <Leader>p <C-^> " Go to previous file
+
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
 
 
 " Ruby stuff ******************************************************************
@@ -290,10 +326,7 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 
 
 " Hard to type *****************************************************************
-"imap uu _
-"imap hh =>
-"imap aa @
-
+nnoremap <leader>V V`]
 
 " -----------------------------------------------------------------------------  
 " |                              Plug-ins                                     |
