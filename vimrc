@@ -40,31 +40,34 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 
-" Bundles ********************************************************************
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'tomtom/tlib_vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
+" >>>>>>>>>>>>>>>>>>>>>>> Bundles <<<<<<<<<<<<<<<<<<<<<<<<<<
+" Color themes
+Bundle 'altercation/vim-colors-solarized'
+" File types support
 Bundle 'pangloss/vim-javascript'
-Bundle 'tpope/vim-surround'
-Bundle 'ervandew/supertab'
-Bundle 'vim-scripts/pythoncomplete'
 Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-fugitive'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'vim-scripts/JSON.vim'
-Bundle 'dangerousben/jsonval'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'wavded/vim-stylus'
+Bundle 'kelan/gyp.vim'
+" Plugins
+Bundle 'tomtom/tlib_vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'wincent/Command-T'
 Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-surround'
+Bundle 'ervandew/supertab'
+Bundle 'tpope/vim-fugitive'
+Bundle 'sjl/gundo.vim'
+Bundle 'dangerousben/jsonval'
 Bundle 'scrooloose/syntastic'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'garbas/vim-snipmate'
 Bundle 'honza/snipmate-snippets'
-Bundle 'sjl/gundo.vim'
-Bundle 'wincent/Command-T'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'kelan/gyp.vim'
+Bundle 'vim-scripts/pythoncomplete'
 
 
 
