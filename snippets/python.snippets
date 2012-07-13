@@ -1,0 +1,38 @@
+snippet newpyfile
+	#!/usr/bin/env python
+	# -*- coding:utf-8 -*-
+
+	import os
+	import sys
+	import argparse
+
+
+
+	def main(args):
+		pass
+
+	
+	if __name__ == '__main__':
+		parser = argparse.ArgumentParser()
+		parser.add_argument(
+			'-i', '--infile', dest='infile',
+			type=argparse.FileType('r'),
+			nargs='?',
+			default=sys.stdin,
+			help='Input file'
+		)
+		parser.add_argument(
+			'-o', '--outfile', dest='outfile',
+			type=argparse.FileType('w'),
+			nargs='?',
+			default=sys.stdout,
+			help='Output file'
+		)
+		main(parser.parse_args())
+
+snippet addarg
+	parser.add_argument(
+		'-${1:shopt}', '--${2:lopt}', dest='${3:dest}',
+		default=${4:default},
+		help='${5:help}'
+	)
