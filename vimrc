@@ -30,6 +30,7 @@ set encoding=utf-8
 set laststatus=2
 set nocompatible
 set ttyfast
+set clipboard=unnamed
 "let mapleader = ","
 
 set rtp+=~/.vim/bundle/vundle/
@@ -395,14 +396,20 @@ let Powerline_symbols = "fancy"
 " -----------------------------------------------------------------------------  
 
 " Mac *************************************************************************
-"if has("mac") 
-  "" 
-"endif
+if has("mac")
+    nnoremap <C-y> :w !pbcopy<CR><CR>
+    vnoremap <C-y> :w !pbcopy<CR><CR>
+    nnoremap <C-p> :w !pbpaste<CR><CR>
+    vnoremap <C-p> :w !pbpaste<CR><CR>
+endif
  
-" Windows *********************************************************************
-"if has("gui_win32")
-  "" 
-"endif
+" Linux ***********************************************************************
+if has("unix")
+    nnoremap <C-y> "+y
+    vnoremap <C-y> "+y
+    nnoremap <C-p> "+p
+    vnoremap <C-p> "+p
+endif
 
 
 
