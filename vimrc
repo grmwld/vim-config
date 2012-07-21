@@ -383,11 +383,12 @@ nnoremap <Leader>u :GundoToggle<CR>
 " Powerline ****************************************************************
 let Powerline_symbols = "fancy"
 
-" JS Hint ********************************************************************
-"let syntastic_enable_signs = 1
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+" Syntastic ********************************************************************
+let syntastic_enable_signs = 1
+let syntastic_auto_jump = 1
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 
 " -----------------------------------------------------------------------------  
