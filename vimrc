@@ -326,6 +326,7 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 
 
 " Hard to type *****************************************************************
+" reselect last selected chunk
 nnoremap <leader>V V`]
 
 " -----------------------------------------------------------------------------  
