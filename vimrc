@@ -367,7 +367,7 @@ map <Leader>f :CommandT<CR>
 " I'm using CommandT for main searching, but it doesn't do buffers, so I'm
 " using FuzzyFinder for that
 map <Leader>b :FufBuffer<CR>
-"let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
+let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
 
 
 " SuperTab ******************************************************************
