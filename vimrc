@@ -62,9 +62,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'sjl/gundo.vim'
 Bundle 'dangerousben/jsonval'
 Bundle 'scrooloose/syntastic'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/snipmate-snippets'
-"Bundle 'Townk/vim-autoclose'
+Bundle 'SirVer/ultisnips'
 Bundle 'Raimondi/delimitMate'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'vim-scripts/pythoncomplete'
@@ -355,6 +353,9 @@ let NERDCreateDefaultMappings=0 " I turn this off to make it simple
 "let g:snip_end_tag = "\._"
 "let g:snip_elem_delim = ":"
 "let g:snip_set_textmate_cp = '1'  " Tab to expand snippets, not automatically.
+
+
+" UltiSnips *****************************************************************
 
 
 " CommandT ********************************************************
