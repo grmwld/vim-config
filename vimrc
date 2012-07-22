@@ -71,7 +71,8 @@ map <Leader>f :CommandT<CR>
 
 " ::::::::::::   TagBar   ::::::::::::::
 Bundle 'majutsushi/tagbar'
-nnoremap <silent> <F8> :TagbarToggle<cr>
+autocmd VimEnter *py nested :call tagbar#autoopen(1)
+nnoremap <Leader>t :TagbarToggle<CR>
 
 
 " ::::::::::::   NERDTree   :::::::::::::::
@@ -123,7 +124,7 @@ set statusline+=%*
 
 " ::::::::::::   UltiSnips   :::::::::::::
 Bundle 'SirVer/ultisnips'
-imap <C-l> <C-r>=UltiSnips_ListSnippets()<cr>
+imap <C-l> <C-r>=UltiSnips_ListSnippets()<CR>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
