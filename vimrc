@@ -123,6 +123,10 @@ set statusline+=%*
 
 " ::::::::::::   UltiSnips   :::::::::::::
 Bundle 'SirVer/ultisnips'
+imap <C-l> <C-r>=UltiSnips_ListSnippets()<cr>
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 
 " ::::::::::::   delimitMate   :::::::::::::
