@@ -23,7 +23,6 @@
 " | Put machine/user specific settings in ~/.vimrc.local                      |
 " -----------------------------------------------------------------------------  
 
-filetype on
 filetype off
 set encoding=utf-8
 set laststatus=2
@@ -38,10 +37,20 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 
-" >>>>>>>>>>>>>>>>>>>>>>> Bundles <<<<<<<<<<<<<<<<<<<<<<<<<<
-" Color themes
+" ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+" :::                                                    :::
+" :::                      Bundles                       :::
+" :::                                                    :::
+" ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+" -----------------------------------  
+" |              Colors             |
+" -----------------------------------  
 Bundle 'altercation/vim-colors-solarized'
-" File types support
+
+" -----------------------------------  
+" |       File types support        |
+" -----------------------------------  
 Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-haml'
 Bundle 'digitaltoad/vim-jade'
@@ -49,24 +58,93 @@ Bundle 'vim-scripts/JSON.vim'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'wavded/vim-stylus'
 Bundle 'kelan/gyp.vim'
-" Plugins
-Bundle 'tomtom/tlib_vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
+
+" -----------------------------------  
+" |              Plug-ins           |
+" -----------------------------------  
+"
+" ::::::::::::   Command-T   :::::::::::::::
 Bundle 'wincent/Command-T'
+let g:CommandTMatchWindowAtTop = 1
+map <Leader>f :CommandT<CR>
+
+
+" ::::::::::::   TagBar   ::::::::::::::
 Bundle 'majutsushi/tagbar'
+nnoremap <silent> <F8> :TagbarToggle<cr>
+
+
+" ::::::::::::   NERDTree   :::::::::::::::
 Bundle 'scrooloose/nerdtree'
+:noremap <Leader>n :NERDTreeToggle<CR>
+let NERDTreeHijackNetrw=1 " User instead of Netrw when doing an edit /foobar
+let NERDTreeMouseMode=1 " Single click for everything
+
+
+" ::::::::::::   NERD Commenter   ::::::::::::::
 Bundle 'scrooloose/nerdcommenter'
+let NERDCreateDefaultMappings=0 " I turn this off to make it simple
+" Toggle commenting on 1 line or all selected lines. Wether to comment or not
+" is decided based on the first line; if it's not commented then all lines
+" will be commented
+:map <Leader>c :call NERDComment(0, "toggle")<CR> 
+
+
+" ::::::::::::   Surround   ::::::::::::::
 Bundle 'tpope/vim-surround'
+
+
+" ::::::::::::   SuperTab   ::::::::::::::
 Bundle 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
+
+
+" ::::::::::::   FuGitive   ::::::::::::::
 Bundle 'tpope/vim-fugitive'
+
+
+" ::::::::::::   Gundo   ::::::::::::::
 Bundle 'sjl/gundo.vim'
+nnoremap <Leader>u :GundoToggle<CR>
+
+
 Bundle 'dangerousben/jsonval'
+
+
+" ::::::::::::   Syntastic   :::::::::::::
 Bundle 'scrooloose/syntastic'
+let syntastic_enable_signs = 1
+let syntastic_auto_jump = 1
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+
+" ::::::::::::   UltiSnips   :::::::::::::
 Bundle 'SirVer/ultisnips'
+
+
+" ::::::::::::   delimitMate   :::::::::::::
 Bundle 'Raimondi/delimitMate'
+
+
+" ::::::::::::   PowerLine   ::::::::::::
 Bundle 'Lokaltog/vim-powerline'
+let Powerline_symbols = "fancy"
+
+
+" ::::::::::::   PythonComplete   :::::::::::::
 Bundle 'vim-scripts/pythoncomplete'
+
+
+" ::::::::::::   Rainbow-Parenthesis   :::::::::::::::
 Bundle 'vim-scripts/Rainbow-Parenthesis'
+
+
+
+
+filetype plugin indent on
 
 
 
@@ -204,8 +282,6 @@ au FocusLost * :wa
 
 
 " File Stuff ******************************************************************
-filetype plugin on
-filetype indent on
 " To show current filetype use: set filetype
 " HTML/XHTML
 autocmd FileType html :set filetype=xhtml
@@ -329,70 +405,6 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 " reselect last selected chunk
 nnoremap <leader>V V`]
 
-" -----------------------------------------------------------------------------  
-" |                              Plug-ins                                     |
-" -----------------------------------------------------------------------------  
-
-" NERDTree ********************************************************************
-:noremap <Leader>n :NERDTreeToggle<CR>
-let NERDTreeHijackNetrw=1 " User instead of Netrw when doing an edit /foobar
-let NERDTreeMouseMode=1 " Single click for everything
-
-
-" NERD Commenter **************************************************************
-let NERDCreateDefaultMappings=0 " I turn this off to make it simple
-
-" Toggle commenting on 1 line or all selected lines. Wether to comment or not
-" is decided based on the first line; if it's not commented then all lines
-" will be commented
-:map <Leader>c :call NERDComment(0, "toggle")<CR> 
-
-
-" SnippetsEmu *****************************************************************
-"imap <unique> <C-j> <Plug>Jumper
-"let g:snip_start_tag = "_\."
-"let g:snip_end_tag = "\._"
-"let g:snip_elem_delim = ":"
-"let g:snip_set_textmate_cp = '1'  " Tab to expand snippets, not automatically.
-
-
-" UltiSnips *****************************************************************
-
-
-" CommandT ********************************************************
-let g:CommandTMatchWindowAtTop = 1
-map <Leader>f :CommandT<CR>
-
-
-" fuzzyfinder ********************************************************
-" I'm using CommandT for main searching, but it doesn't do buffers, so I'm
-" using FuzzyFinder for that
-map <Leader>b :FufBuffer<CR>
-let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
-
-
-" SuperTab ******************************************************************
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
-
-
-
-" TagBar *******************************************************************
-nnoremap <silent> <F8> :TagbarToggle<cr>
-
-
-" Gundo ********************************************************************
-nnoremap <Leader>u :GundoToggle<CR>
-
-" Powerline ****************************************************************
-let Powerline_symbols = "fancy"
-
-" Syntastic ********************************************************************
-let syntastic_enable_signs = 1
-let syntastic_auto_jump = 1
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
 
 " -----------------------------------------------------------------------------  
