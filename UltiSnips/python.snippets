@@ -1,0 +1,46 @@
+snippet addarg "Add an argument to argparse.ArgumentParser()" b
+parser.add_argument(
+    '-${1:short_opt}', '--${2:long_opt}', dest='$2',
+    type=${4:type},
+    default=${5:default},
+    help='${6:help}'
+)
+endsnippet
+
+snippet todo "Add a TODO remainder"
+# TODO: ${1:desc} -- `echo $USER` [ `!v strftime("%c")` ]
+endsnippet
+
+snippet newpyfile "Template python file" !b
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+
+import os
+import sys
+import argparse
+
+
+
+def main(args):
+    pass
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '-i', '--infile', dest='infile',
+        type=argparse.FileType('r'),
+        nargs='?',
+        default=sys.stdin,
+        help='Input file'
+    )
+    parser.add_argument(
+        '-o', '--outfile', dest='outfile',
+        type=argparse.FileType('w'),
+        nargs='?',
+        default=sys.stdout,
+        help='Output file'
+    )
+    main(parser.parse_args())
+
+endsnippet
