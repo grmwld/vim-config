@@ -25,7 +25,6 @@
 
 filetype on
 filetype off
-
 set encoding=utf-8
 set laststatus=2
 set nocompatible
@@ -65,7 +64,8 @@ Bundle 'dangerousben/jsonval'
 Bundle 'scrooloose/syntastic'
 Bundle 'garbas/vim-snipmate'
 Bundle 'honza/snipmate-snippets'
-Bundle 'Townk/vim-autoclose'
+"Bundle 'Townk/vim-autoclose'
+Bundle 'Raimondi/delimitMate'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'vim-scripts/pythoncomplete'
 Bundle 'vim-scripts/Rainbow-Parenthesis'
