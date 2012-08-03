@@ -71,6 +71,7 @@ map <Leader>f :CommandT<CR>
 
 " ::::::::::::   TagBar   ::::::::::::::
 Bundle 'majutsushi/tagbar'
+let g:tagbar_left = 1
 autocmd VimEnter *py nested :call tagbar#autoopen(1)
 nnoremap <Leader>t :TagbarToggle<CR>
 
@@ -116,7 +117,7 @@ Bundle 'dangerousben/jsonval'
 " ::::::::::::   Syntastic   :::::::::::::
 Bundle 'scrooloose/syntastic'
 let syntastic_enable_signs = 1
-let syntastic_auto_jump = 1
+let syntastic_auto_jump = 0
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
