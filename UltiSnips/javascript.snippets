@@ -3,3 +3,19 @@ ${1:array}.forEach(function(${2:elem}) {
   ${0:# code...}
 });
 endsnippet
+
+snippet cl "console.log()" !b
+console.log('$1');$0
+endsnippet
+
+snippet fun "var xxx = function" !b
+var ${1:function_name} = function(${2:args}) {
+    ${0:// body ...}
+};
+endsnippet
+
+snippet proto "Prototype (proto)" !
+${1:class_name}.prototype.${2:method_name} = function(${3:first_argument}) {
+	${0:// body...}
+};
+endsnippet
