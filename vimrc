@@ -111,6 +111,10 @@ Bundle 'sjl/gundo.vim'
 nnoremap <Leader>u :GundoToggle<CR>
 
 
+" ::::::::::::   EasyMotion   ::::::::::::::
+Bundle 'Lokaltog/vim-easymotion'
+
+
 Bundle 'dangerousben/jsonval'
 
 
