@@ -1,7 +1,7 @@
 snippet addarg "Add an argument to argparse.ArgumentParser()" b
 parser.add_argument(
     '-${1:short_opt}', '--${2:long_opt}', dest='$2',
-    type=${4:type},
+    ${3:type}=${4:type},
     default=${5:default},
     help='${6:help}'
 )
@@ -19,11 +19,10 @@ snippet newpyfile "Template python file" !b
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-import os
 import sys
 import argparse
 
-
+$0
 
 def main(args):
     pass
@@ -34,7 +33,7 @@ if __name__ == '__main__':
     parser.add_argument(
         '-i', '--infile', dest='infile',
         type=argparse.FileType('r'),
-        nargs='?',
+        nargs='${1:?}',
         default=sys.stdin,
         help='Input file'
     )
@@ -46,5 +45,4 @@ if __name__ == '__main__':
         help='Output file'
     )
     main(parser.parse_args())
-
 endsnippet
