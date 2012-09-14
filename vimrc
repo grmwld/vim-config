@@ -47,6 +47,13 @@ Bundle 'gmarik/vundle'
 " |              Colors             |
 " -----------------------------------  
 Bundle 'altercation/vim-colors-solarized'
+set t_Co=256 " 256 colors
+syntax on " syntax highlighting
+let g:solarized_termcolors=256
+let g:solarized_diffmode="high"
+set background=dark
+colorscheme solarized
+
 
 " -----------------------------------  
 " |       File types support        |
@@ -58,6 +65,7 @@ Bundle 'vim-scripts/JSON.vim'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'wavded/vim-stylus'
 Bundle 'kelan/gyp.vim'
+
 
 " -----------------------------------  
 " |              Plug-ins           |
@@ -249,17 +257,12 @@ nnoremap <leader><space> :noh<cr>
 
 
 " Colors **********************************************************************
-set t_Co=256 " 256 colors
-syntax on " syntax highlighting
 let python_highlight_all=1
 let python_highlight_indent_errors=0
 let python_highlight_space_errors=0
 let g:load_doxygen_syntax=1
 au! BufRead,BufNewFile *.json setfiletype json
 au! BufRead,BufNewFile *.mkd,*.md,*.mdown,*.markdown setfiletype mkd
-let g:solarized_termcolors=256
-set background=dark
-colorscheme solarized
 
 
 " Status Line *****************************************************************
