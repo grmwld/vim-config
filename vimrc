@@ -3,7 +3,7 @@
 " |                   (see gvimrc for gui vim settings)                       |
 " |                                                                           |
 " | Some highlights:                                                          |
-" |   jj = <esc>  Very useful for keeping your hands on the home row          |
+" |   ii = <esc>  Very useful for keeping your hands on the home row          |
 " |   ,n = toggle NERDTree off and on                                         |
 " |                                                                           |
 " |   ,f = fuzzy find all files                                               |
@@ -116,7 +116,7 @@ Bundle 'dangerousben/jsonval'
 
 " ::::::::::::   Syntastic   :::::::::::::
 Bundle 'scrooloose/syntastic'
-let syntastic_enable_signs = 1
+let syntastic_enable_signs = 0
 let syntastic_auto_jump = 0
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -141,7 +141,11 @@ let Powerline_symbols = "fancy"
 
 
 " ::::::::::::   PythonComplete   :::::::::::::
-Bundle 'vim-scripts/pythoncomplete'
+"Bundle 'vim-scripts/pythoncomplete'
+
+
+" ::::::::::::   PythonMode   :::::::::::::
+Bundle 'klen/python-mode'
 
 
 " ::::::::::::   Rainbow-Parenthesis   :::::::::::::::
@@ -155,7 +159,7 @@ filetype plugin indent on
 
 
 " Misc settings ***************************************************************
-inoremap jj <ESC>
+inoremap ii <ESC>
 set backspace=indent,eol,start
 set matchpairs+=<:>
 set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
@@ -266,7 +270,7 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set nowrap
 set linebreak  " Wrap at word
 set formatoptions=qrn1
-set colorcolumn=85
+set colorcolumn=80
 
 
 " Persistant undo
