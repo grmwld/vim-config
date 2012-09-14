@@ -146,6 +146,8 @@ let Powerline_symbols = "fancy"
 
 " ::::::::::::   PythonMode   :::::::::::::
 Bundle 'klen/python-mode'
+let g:pymode_lint_checker = "pyflakes, pep8"
+let g:pymode_folding = 0
 
 
 " ::::::::::::   Rainbow-Parenthesis   :::::::::::::::
