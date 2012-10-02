@@ -93,11 +93,11 @@ let NERDTreeMouseMode=1 " Single click for everything
 
 " ::::::::::::   NERD Commenter   ::::::::::::::
 Bundle 'scrooloose/nerdcommenter'
-let NERDCreateDefaultMappings=0 " I turn this off to make it simple
+"let NERDCreateDefaultMappings=0 " I turn this off to make it simple
 " Toggle commenting on 1 line or all selected lines. Wether to comment or not
 " is decided based on the first line; if it's not commented then all lines
 " will be commented
-:map <Leader>c :call NERDComment(0, "toggle")<CR> 
+":map <Leader>c :call NERDComment(0, "toggle")<CR> 
 
 
 " ::::::::::::   Surround   ::::::::::::::
@@ -181,8 +181,6 @@ inoremap ii <ESC>
 set backspace=indent,eol,start
 set matchpairs+=<:>
 set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
-nnoremap <space> za
-vnoremap <space> zf
 "set nofoldenable " Turn off folding 
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 
