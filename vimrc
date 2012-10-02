@@ -126,6 +126,10 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'dangerousben/jsonval'
 
 
+" ::::::::::::   PythonComplete   :::::::::::::
+Bundle 'vim-scripts/pythoncomplete'
+
+
 " ::::::::::::   Syntastic   :::::::::::::
 Bundle 'scrooloose/syntastic'
 let syntastic_enable_signs = 0
@@ -152,13 +156,9 @@ Bundle 'Lokaltog/vim-powerline'
 let Powerline_symbols = "fancy"
 
 
-" ::::::::::::   PythonComplete   :::::::::::::
-"Bundle 'vim-scripts/pythoncomplete'
-
-
 " ::::::::::::   PythonMode   :::::::::::::
-Bundle 'klen/python-mode'
-let g:pymode_lint_checker = "pyflakes, pep8"
+"Bundle 'klen/python-mode'
+"let g:pymode_lint_checker = "pyflakes, pep8"
 "let g:pymode_folding = 0
 
 
