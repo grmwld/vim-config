@@ -162,6 +162,10 @@ let Powerline_symbols = "fancy"
 "let g:pymode_folding = 0
 
 
+" ::::::::::::   Python Folding   :::::::::::::
+Bundle 'agrimaldi/SimpylFold'
+
+
 " ::::::::::::   Rainbow-Parenthesis   :::::::::::::::
 Bundle 'vim-scripts/Rainbow-Parenthesis'
 
@@ -177,6 +181,8 @@ inoremap ii <ESC>
 set backspace=indent,eol,start
 set matchpairs+=<:>
 set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
+nnoremap <space> za
+vnoremap <space> zf
 "set nofoldenable " Turn off folding 
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 
