@@ -130,7 +130,11 @@ Bundle 'dangerousben/jsonval'
 
 
 " ::::::::::::   PythonComplete   :::::::::::::
-Bundle 'vim-scripts/pythoncomplete'
+"Bundle 'vim-scripts/pythoncomplete'
+
+
+" ::::::::::::   Jedi (python)   :::::::::::::
+Bundle 'davidhalter/jedi-vim'
 
 
 " ::::::::::::   Syntastic   :::::::::::::
