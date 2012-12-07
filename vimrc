@@ -186,6 +186,9 @@ set matchpairs+=<:>
 set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
 "set nofoldenable " Turn off folding 
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+" printing
+set pdev=pdf
+set printoptions=paper:A4,syntax:y,wrap:y,number:y
 
 
 " Line numbering
