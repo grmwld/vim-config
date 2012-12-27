@@ -68,6 +68,7 @@ Bundle 'wavded/vim-stylus'
 Bundle 'kelan/gyp.vim'
 Bundle 'vim-scripts/Vim-R-plugin'
 let vimrplugin_screenplugin = 0
+let vimrplugin_assign = 0
 
 
 " -----------------------------------  
