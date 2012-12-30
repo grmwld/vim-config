@@ -48,12 +48,8 @@ Bundle 'gmarik/vundle'
 " -----------------------------------  
 Bundle 'altercation/vim-colors-solarized'
 set t_Co=256 " 256 colors
-syntax on " syntax highlighting
 let g:solarized_termcolors=256
 let g:solarized_diffmode="high"
-set background=dark
-colorscheme solarized
-hi Normal ctermbg=NONE
 
 
 " -----------------------------------  
@@ -90,9 +86,10 @@ nnoremap <Leader>t :TagbarToggle<CR>
 
 " ::::::::::::   NERDTree   :::::::::::::::
 Bundle 'scrooloose/nerdtree'
-:noremap <Leader>n :NERDTreeToggle<CR>
 let NERDTreeHijackNetrw=1 " User instead of Netrw when doing an edit /foobar
 let NERDTreeMouseMode=1 " Single click for everything
+Bundle 'jistr/vim-nerdtree-tabs'
+:noremap <Leader>n :NERDTreeTabsToggle<CR>
 
 
 " ::::::::::::   NERD Commenter   ::::::::::::::
@@ -181,6 +178,10 @@ Bundle 'vim-scripts/Rainbow-Parenthesis'
 
 
 filetype plugin indent on
+syntax on " syntax highlighting
+set background=dark
+colorscheme solarized
+hi Normal ctermbg=NONE
 
 
 
