@@ -175,6 +175,13 @@ Bundle 'agrimaldi/SimpylFold'
 Bundle 'vim-scripts/Rainbow-Parenthesis'
 
 
+" ::::::::::::   vim-rooter   :::::::::::::::
+Bundle 'airblade/vim-rooter'
+
+
+" ::::::::::::   peepopen   :::::::::::::::
+"Bundle 'agrimaldi/vim-peepopen'
+
 
 
 filetype plugin indent on
