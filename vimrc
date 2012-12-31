@@ -29,7 +29,6 @@ set laststatus=2
 set nocompatible
 set ttyfast
 set clipboard=unnamed
-"let mapleader = ","
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -71,10 +70,15 @@ let vimrplugin_assign = 0
 " |              Plug-ins           |
 " -----------------------------------  
 "
-" ::::::::::::   Command-T   :::::::::::::::
-Bundle 'wincent/Command-T'
-let g:CommandTMatchWindowAtTop = 1
-map <Leader>f :CommandT<CR>
+" ::::::::::::   peepopen   :::::::::::::::
+Bundle 'agrimaldi/vim-peepopen'
+"unmap <Leader>p
+
+
+" ::::::::::::   Ctrl-P  :::::::::::::::
+Bundle 'kien/ctrlp.vim'
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_map = '<Leader>p'
 
 
 " ::::::::::::   TagBar   ::::::::::::::
@@ -177,10 +181,6 @@ Bundle 'vim-scripts/Rainbow-Parenthesis'
 
 " ::::::::::::   vim-rooter   :::::::::::::::
 Bundle 'airblade/vim-rooter'
-
-
-" ::::::::::::   peepopen   :::::::::::::::
-Bundle 'agrimaldi/vim-peepopen'
 
 
 
@@ -454,18 +454,23 @@ nnoremap <leader>V V`]
 
 " Mac *************************************************************************
 if has("mac")
+    
+    " Clipboard interaction
     nnoremap <C-y> :w !pbcopy<CR><CR>
     vnoremap <C-y> :w !pbcopy<CR><CR>
     nnoremap <C-p> :w !pbpaste<CR><CR>
     vnoremap <C-p> :w !pbpaste<CR><CR>
+
 endif
  
 " Linux ***********************************************************************
 if has("unix")
+
     nnoremap <C-y> "+y
     vnoremap <C-y> "+y
     nnoremap <C-p> "+p
     vnoremap <C-p> "+p
+        
 endif
 
 
