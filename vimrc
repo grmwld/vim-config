@@ -180,7 +180,7 @@ Bundle 'airblade/vim-rooter'
 
 
 " ::::::::::::   peepopen   :::::::::::::::
-"Bundle 'agrimaldi/vim-peepopen'
+Bundle 'agrimaldi/vim-peepopen'
 
 
 
@@ -417,8 +417,6 @@ imap <up> <C-o>gk
 map j gj
 imap <down> <C-o>gj
 map E ge
-
-map <Leader>p <C-^> " Go to previous file
 
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
