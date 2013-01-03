@@ -4,7 +4,7 @@ ${1:array}.forEach(function(${2:elem}) {
 });
 endsnippet
 
-snippet cl "console.log();" !b
+snippet cl "console.log();" b!
 console.log($1);$0
 endsnippet
 
@@ -12,13 +12,13 @@ snippet cf "function();" i!
 ${1:function_name}(${2:args});
 endsnippet
 
-snippet dfun "var xxx = function" b!
+snippet dfun "var xxx = function" !b
 var ${1:function_name} = function(${2:args}) {
   ${0:// body ...}
 };
 endsnippet
 
-snippet cbfun "callback function" i!
+snippet cbfun "callback function" !b
 function(${1:args}) {
   ${0:// body ...}
 }

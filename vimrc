@@ -148,8 +148,8 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 
-" ::::::::::::   UltiSnips   :::::::::::::
-Bundle 'SirVer/ultisnips'
+ "::::::::::::   UltiSnips   :::::::::::::
+Bundle 'guns/ultisnips'
 imap <C-l> <C-r>=UltiSnips_ListSnippets()<CR>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
