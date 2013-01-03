@@ -23,6 +23,8 @@ endif
 " Linux ***********************************************************************
 if has("unix")
 
+    set guioptions-=T
+
     nnoremap <C-y> "+y
     vnoremap <C-y> "+y
     nnoremap <C-p> "+p
