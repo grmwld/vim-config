@@ -24,6 +24,7 @@ endif
 if has("unix")
 
     set guioptions-=T
+    set vb t_vb=
 
     nnoremap <C-y> "+y
     vnoremap <C-y> "+y
