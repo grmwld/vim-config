@@ -4,18 +4,34 @@ ${1:array}.forEach(function(${2:elem}) {
 });
 endsnippet
 
-snippet cl "console.log()" !b
-console.log('$1');$0
+snippet cl "console.log();" !b
+console.log($1);$0
 endsnippet
 
-snippet fun "var xxx = function" !b
+snippet cf "function();" i!
+${1:function_name}(${2:args});
+endsnippet
+
+snippet dfun "var xxx = function" b!
 var ${1:function_name} = function(${2:args}) {
-    ${0:// body ...}
+  ${0:// body ...}
 };
+endsnippet
+
+snippet cbfun "callback function" i!
+function(${1:args}) {
+  ${0:// body ...}
+}
 endsnippet
 
 snippet proto "Prototype (proto)" !
 ${1:class_name}.prototype.${2:method_name} = function(${3:first_argument}) {
-	${0:// body...}
+  ${0:// body...}
 };
+endsnippet
+
+snippet if "if () {}" !b
+if (${1:condition}) {
+  ${0:// body ...}
+}
 endsnippet
