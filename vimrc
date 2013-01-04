@@ -197,7 +197,7 @@ inoremap ii <ESC>
 set backspace=indent,eol,start
 set matchpairs+=<:>
 set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
-"set nofoldenable " Turn off folding 
+set nofoldenable " Turn off folding 
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 " printing
 set pdev=pdf
