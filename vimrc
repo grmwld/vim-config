@@ -198,7 +198,7 @@ set backspace=indent,eol,start
 set matchpairs+=<:>
 set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
 set nofoldenable " Turn off folding 
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<CR>
 " printing
 set pdev=pdf
 set printoptions=paper:A4,syntax:y,wrap:y,number:y
@@ -281,11 +281,9 @@ nnoremap <leader><space> :noh<cr>
 
 " Colors **********************************************************************
 let python_highlight_all=1
-let python_highlight_indent_errors=0
-let python_highlight_space_errors=0
+let python_highlight_indent_errors=1
+let python_highlight_space_errors=1
 let g:load_doxygen_syntax=1
-au! BufRead,BufNewFile *.json setfiletype json
-au! BufRead,BufNewFile *.mkd,*.md,*.mdown,*.markdown setfiletype mkd
 
 
 " Status Line *****************************************************************
@@ -325,6 +323,8 @@ au FocusLost * :wa
 
 " File Stuff ******************************************************************
 " To show current filetype use: set filetype
+au! BufRead,BufNewFile *.json setfiletype json
+au! BufRead,BufNewFile *.mkd,*.md,*.mdown,*.markdown setfiletype mkd
 " HTML/XHTML
 autocmd FileType html :set filetype=xhtml
 autocmd FileType xhtml setlocal sw=2
@@ -404,6 +404,8 @@ function! ToggleMouse()
 endfunction
 behave xterm
 "set selectmode=mouse
+
+:set pastetoggle=<F3>
 
 
 " Navigation ******************************************************************
@@ -490,7 +492,6 @@ if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
-:set pastetoggle=<F3>
 
 "if hostname() == "foo"
   " do something
