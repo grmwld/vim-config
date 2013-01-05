@@ -1,1 +1,1 @@
-syntax match javaScriptExceptions     /\w*Error/
+syntax match javaScriptExceptions     /\w*Error\(\s*:\s*\)\@!/
