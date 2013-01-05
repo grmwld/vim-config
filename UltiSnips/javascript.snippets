@@ -9,17 +9,17 @@ console.log($1);$0
 endsnippet
 
 snippet cf "function();" i!
-${1:function_name}(${2:args});
+${1:function_name}(${2});
 endsnippet
 
 snippet dfun "var xxx = function" !b
-var ${1:function_name} = function(${2:args}) {
+var ${1:function_name} = function(${2}) {
   ${0:// body ...}
 };
 endsnippet
 
-snippet cbfun "callback function" !b
-function(${1:args}) {
+snippet cbfun "callback function" !i
+function(${1}) {
   ${0:// body ...}
 }
 endsnippet
