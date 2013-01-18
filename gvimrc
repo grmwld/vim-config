@@ -15,7 +15,7 @@ if has("mac")
 
     " Use PeepOpen to find files in directory tree
     "if !hasmapto('<Plug>PeepOpen')
-    map <silent> <Leader>p <Plug>PeepOpen
+    "map <silent> <Leader>p <Plug>PeepOpen
     "endif
 
 endif

@@ -71,13 +71,13 @@ let vimrplugin_assign = 0
 " -----------------------------------  
 "
 " ::::::::::::   peepopen   :::::::::::::::
-Bundle 'agrimaldi/vim-peepopen'
+"Bundle 'agrimaldi/vim-peepopen'
 "unmap <Leader>p
 
 
 " ::::::::::::   Ctrl-P  :::::::::::::::
 Bundle 'kien/ctrlp.vim'
-let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_map = '<Leader>p'
 
 
