@@ -131,10 +131,6 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'dangerousben/jsonval'
 
 
-" ::::::::::::   PythonComplete   :::::::::::::
-"Bundle 'vim-scripts/pythoncomplete'
-
-
 " ::::::::::::   Jedi (python)   :::::::::::::
 Bundle 'davidhalter/jedi-vim'
 
@@ -181,6 +177,15 @@ Bundle 'vim-scripts/Rainbow-Parenthesis'
 
 " ::::::::::::   vim-rooter   :::::::::::::::
 Bundle 'airblade/vim-rooter'
+
+
+" ::::::::::::   AutomaticLatexPlugin   :::::::::::::::
+Bundle 'LaTeX-Box-Team/LaTeX-Box'
+let g:LatexBox_latexmk_options = '-pvc -bibtex'
+let g:LatexBox_viewer = '/Applications/Skim.app/Contents/MacOS/Skim'
+let g:LatexBox_output_type = 'pdf'
+let g:LatexBox_autojump = 1
+
 
 
 
