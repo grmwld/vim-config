@@ -161,7 +161,8 @@ Bundle 'Raimondi/delimitMate'
 
 
 " ::::::::::::   PowerLine   ::::::::::::
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Bundle 'Lokaltog/vim-powerline'
 let Powerline_symbols = "fancy"
 
 
