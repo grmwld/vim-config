@@ -5,7 +5,7 @@
 
 " Mac *************************************************************************
 if has("mac")
-    set guifont=Menlo\ for\ Powerline:h12
+    set guifont=PragmataPro\ for\ Powerline:h14
 
     " Interact with clipboard
     nnoremap <C-y> :w !pbcopy<CR><CR>

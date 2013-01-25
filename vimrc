@@ -157,9 +157,7 @@ Bundle 'Raimondi/delimitMate'
 
 
 " ::::::::::::   PowerLine   ::::::::::::
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-"Bundle 'Lokaltog/vim-powerline'
-let Powerline_symbols = "fancy"
+python from powerline.bindings.vim import source_plugin; source_plugin()
 
 
 " ::::::::::::   PythonMode   :::::::::::::
