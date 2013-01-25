@@ -70,11 +70,6 @@ let vimrplugin_assign = 0
 " |              Plug-ins           |
 " -----------------------------------  
 "
-" ::::::::::::   peepopen   :::::::::::::::
-"Bundle 'agrimaldi/vim-peepopen'
-"unmap <Leader>p
-
-
 " ::::::::::::   Ctrl-P  :::::::::::::::
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_cmd = 'CtrlP'
@@ -98,11 +93,6 @@ Bundle 'jistr/vim-nerdtree-tabs'
 
 " ::::::::::::   NERD Commenter   ::::::::::::::
 Bundle 'scrooloose/nerdcommenter'
-"let NERDCreateDefaultMappings=0 " I turn this off to make it simple
-" Toggle commenting on 1 line or all selected lines. Wether to comment or not
-" is decided based on the first line; if it's not commented then all lines
-" will be commented
-":map <Leader>c :call NERDComment(0, "toggle")<CR> 
 
 
 " ::::::::::::   Surround   ::::::::::::::
@@ -160,12 +150,6 @@ Bundle 'Raimondi/delimitMate'
 python from powerline.bindings.vim import source_plugin; source_plugin()
 
 
-" ::::::::::::   PythonMode   :::::::::::::
-"Bundle 'klen/python-mode'
-"let g:pymode_lint_checker = "pyflakes, pep8"
-"let g:pymode_folding = 0
-
-
 " ::::::::::::   Python Folding   :::::::::::::
 Bundle 'agrimaldi/SimpylFold'
 
@@ -185,6 +169,9 @@ let g:LatexBox_viewer = '/Applications/Skim.app/Contents/MacOS/Skim'
 let g:LatexBox_output_type = 'pdf'
 let g:LatexBox_autojump = 1
 
+" ::::::::::::   Arpeggio   ::::::::::::::
+Bundle 'kana/vim-arpeggio'
+call arpeggio#map('ivsc', '', 0, 'jk', '<Esc>')
 
 
 
@@ -197,7 +184,6 @@ hi Normal ctermbg=NONE
 
 
 " Misc settings ***************************************************************
-inoremap ii <ESC>
 set backspace=indent,eol,start
 set matchpairs+=<:>
 set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
@@ -417,21 +403,10 @@ nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
-" Make cursor move by visual lines instead of file lines (when wrapping)
-map k gk
-imap <up> <C-o>gk
-map j gj
-imap <down> <C-o>gj
-map E ge
 
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
-
-
-" Ruby stuff ******************************************************************
-"compiler ruby         " Enable compiler support for ruby
-"map <F5> :!ruby %<CR>
 
 
 " Omni Completion *************************************************************
