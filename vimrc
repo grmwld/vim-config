@@ -125,6 +125,10 @@ Bundle 'dangerousben/jsonval'
 Bundle 'davidhalter/jedi-vim'
 
 
+" ::::::::::::   YCM (code completion)   :::::::::::::
+"Bundle 'Valloric/YouCompleteMe'
+
+
 " ::::::::::::   Syntastic   :::::::::::::
 Bundle 'scrooloose/syntastic'
 let syntastic_enable_signs = 0
@@ -147,7 +151,7 @@ Bundle 'Raimondi/delimitMate'
 
 
 " ::::::::::::   PowerLine   ::::::::::::
-python from powerline.bindings.vim import source_plugin; source_plugin()
+set rtp+=~/.vim/powerline/bindings/vim
 
 
 " ::::::::::::   Python Folding   :::::::::::::
@@ -196,13 +200,17 @@ set printoptions=paper:A4,syntax:y,wrap:y,number:y
 
 " Line numbering
 set relativenumber
+set number
 autocmd InsertEnter * :set number
+autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
+autocmd InsertLeave * :set number
 function! NumberToggle()
     if(&relativenumber == 1)
         set number
     else
         set relativenumber
+        set number
     endif
 endfunc
 nnoremap <C-n> :call NumberToggle()<cr>
