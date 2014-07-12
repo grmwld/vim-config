@@ -33,7 +33,7 @@ set clipboard=unnamed
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 
 " ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -45,7 +45,7 @@ Bundle 'gmarik/vundle'
 " -----------------------------------  
 " |              Colors             |
 " -----------------------------------  
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
 set t_Co=256 " 256 colors
 let g:solarized_termcolors=256
 let g:solarized_diffmode="high"
@@ -54,14 +54,16 @@ let g:solarized_diffmode="high"
 " -----------------------------------  
 " |       File types support        |
 " -----------------------------------  
-Bundle 'pangloss/vim-javascript'
-Bundle 'tpope/vim-haml'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'vim-scripts/JSON.vim'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'wavded/vim-stylus'
-Bundle 'kelan/gyp.vim'
-Bundle 'vim-scripts/Vim-R-plugin'
+Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-haml'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'vim-scripts/JSON.vim'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'wavded/vim-stylus'
+Plugin 'kelan/gyp.vim'
+Plugin 'vim-scripts/Vim-R-plugin'
+Plugin 'JuliaLang/julia-vim'
+Plugin 'fatih/vim-go'
 let vimrplugin_screenplugin = 0
 let vimrplugin_assign = 0
 
@@ -71,66 +73,66 @@ let vimrplugin_assign = 0
 " -----------------------------------  
 "
 " ::::::::::::   Ctrl-P  :::::::::::::::
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_map = '<Leader>p'
 
 
 " ::::::::::::   TagBar   ::::::::::::::
-Bundle 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 let g:tagbar_left = 1
 autocmd VimEnter *py nested :call tagbar#autoopen(1)
 nnoremap <Leader>t :TagbarToggle<CR>
 
 
 " ::::::::::::   NERDTree   :::::::::::::::
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 let NERDTreeHijackNetrw=1 " User instead of Netrw when doing an edit /foobar
 let NERDTreeMouseMode=1 " Single click for everything
-Bundle 'jistr/vim-nerdtree-tabs'
+Plugin 'jistr/vim-nerdtree-tabs'
 :noremap <Leader>n :NERDTreeTabsToggle<CR>
 
 
 " ::::::::::::   NERD Commenter   ::::::::::::::
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
 
 
 " ::::::::::::   Surround   ::::::::::::::
-Bundle 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 
 
 " ::::::::::::   SuperTab   ::::::::::::::
-Bundle 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
 
 
 " ::::::::::::   FuGitive   ::::::::::::::
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
 
 " ::::::::::::   Gundo   ::::::::::::::
-Bundle 'sjl/gundo.vim'
+Plugin 'sjl/gundo.vim'
 nnoremap <Leader>u :GundoToggle<CR>
 
 
 " ::::::::::::   EasyMotion   ::::::::::::::
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 
 
-Bundle 'dangerousben/jsonval'
+Plugin 'dangerousben/jsonval'
 
 
 " ::::::::::::   Jedi (python)   :::::::::::::
-Bundle 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim'
 
 
 " ::::::::::::   YCM (code completion)   :::::::::::::
-"Bundle 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 
 " ::::::::::::   Syntastic   :::::::::::::
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 let syntastic_enable_signs = 0
 let syntastic_auto_jump = 0
 set statusline+=%#warningmsg#
@@ -139,7 +141,7 @@ set statusline+=%*
 
 
  "::::::::::::   UltiSnips   :::::::::::::
-Bundle 'guns/ultisnips'
+Plugin 'guns/ultisnips'
 imap <C-l> <C-r>=UltiSnips_ListSnippets()<CR>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -147,7 +149,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 
 " ::::::::::::   delimitMate   :::::::::::::
-Bundle 'Raimondi/delimitMate'
+Plugin 'Raimondi/delimitMate'
 
 
 " ::::::::::::   PowerLine   ::::::::::::
@@ -155,28 +157,30 @@ set rtp+=~/.vim/powerline/bindings/vim
 
 
 " ::::::::::::   Python Folding   :::::::::::::
-Bundle 'agrimaldi/SimpylFold'
+Plugin 'agrimaldi/SimpylFold'
 
 
 " ::::::::::::   Rainbow-Parenthesis   :::::::::::::::
-Bundle 'vim-scripts/Rainbow-Parenthesis'
+Plugin 'vim-scripts/Rainbow-Parenthesis'
 
 
 " ::::::::::::   vim-rooter   :::::::::::::::
-Bundle 'airblade/vim-rooter'
+Plugin 'airblade/vim-rooter'
 
 
 " ::::::::::::   AutomaticLatexPlugin   :::::::::::::::
-Bundle 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
 let g:LatexBox_latexmk_options = '-pvc -bibtex'
 let g:LatexBox_viewer = '/Applications/Skim.app/Contents/MacOS/Skim'
 let g:LatexBox_output_type = 'pdf'
 let g:LatexBox_autojump = 1
 
 " ::::::::::::   Arpeggio   ::::::::::::::
-Bundle 'kana/vim-arpeggio'
+Plugin 'kana/vim-arpeggio'
 call arpeggio#map('ivsc', '', 0, 'jk', '<Esc>')
 
+" ::::::::::::   Hardtime   ::::::::::::::
+Plugin 'takac/vim-hardtime'
 
 
 filetype plugin indent on
@@ -200,11 +204,11 @@ set printoptions=paper:A4,syntax:y,wrap:y,number:y
 
 " Line numbering
 set relativenumber
-set number
+"set number
 autocmd InsertEnter * :set number
 autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
-autocmd InsertLeave * :set number
+"autocmd InsertLeave * :set number
 function! NumberToggle()
     if(&relativenumber == 1)
         set number
