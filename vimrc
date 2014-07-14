@@ -3,12 +3,7 @@
 " |                   (see gvimrc for gui vim settings)                       |
 " |                                                                           |
 " | Some highlights:                                                          |
-" |   ii = <esc>  Very useful for keeping your hands on the home row          |
 " |   ,n = toggle NERDTree off and on                                         |
-" |                                                                           |
-" |   ,f = fuzzy find all files                                               |
-" |   ,b = fuzzy find in all buffers                                          |
-" |   ,p = go to previous file                                                |
 " |                                                                           |
 " |   ,h = new horizontal window                                              |
 " |   ,v = new vertical window                                                |
@@ -23,18 +18,30 @@
 " | Put machine/user specific settings in ~/.vimrc.local                      |
 " -----------------------------------------------------------------------------  
 
+if has('vim_starting')
+   set nocompatible
+   set runtimepath+=~/.vim/bundle/neobundle.vim/
+ endif
+
 filetype off
 set encoding=utf-8
 set laststatus=2
-set nocompatible
+set timeoutlen=50
 set ttyfast
 set clipboard=unnamed
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call neobundle#begin(expand('~/.vim/bundle/'))
 
-Plugin 'gmarik/vundle'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'Shougo/vimproc.vim', {
+      \ 'build' : {
+      \     'windows' : 'tools\\update-dll-mingw',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
 
 " ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 " :::                                                    :::
@@ -42,28 +49,17 @@ Plugin 'gmarik/vundle'
 " :::                                                    :::
 " ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-" -----------------------------------  
-" |              Colors             |
-" -----------------------------------  
-Plugin 'altercation/vim-colors-solarized'
-set t_Co=256 " 256 colors
-let g:solarized_termcolors=256
-let g:solarized_diffmode="high"
-
-
+"
 " -----------------------------------  
 " |       File types support        |
 " -----------------------------------  
-Plugin 'pangloss/vim-javascript'
-Plugin 'tpope/vim-haml'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'vim-scripts/JSON.vim'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'wavded/vim-stylus'
-Plugin 'kelan/gyp.vim'
-Plugin 'vim-scripts/Vim-R-plugin'
-Plugin 'JuliaLang/julia-vim'
-Plugin 'fatih/vim-go'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'vim-scripts/JSON.vim'
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kelan/gyp.vim'
+NeoBundle 'vim-scripts/Vim-R-plugin'
+NeoBundle 'JuliaLang/julia-vim'
+"NeoBundle 'fatih/vim-go'
 let vimrplugin_screenplugin = 0
 let vimrplugin_assign = 0
 
@@ -73,66 +69,70 @@ let vimrplugin_assign = 0
 " -----------------------------------  
 "
 " ::::::::::::   Ctrl-P  :::::::::::::::
-Plugin 'kien/ctrlp.vim'
+NeoBundle 'kien/ctrlp.vim'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_map = '<Leader>p'
 
 
 " ::::::::::::   TagBar   ::::::::::::::
-Plugin 'majutsushi/tagbar'
+NeoBundle 'majutsushi/tagbar'
 let g:tagbar_left = 1
 autocmd VimEnter *py nested :call tagbar#autoopen(1)
 nnoremap <Leader>t :TagbarToggle<CR>
 
 
 " ::::::::::::   NERDTree   :::::::::::::::
-Plugin 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/nerdtree', { 'augroup' : 'NERDTreeHijackNetrw'}
 let NERDTreeHijackNetrw=1 " User instead of Netrw when doing an edit /foobar
 let NERDTreeMouseMode=1 " Single click for everything
-Plugin 'jistr/vim-nerdtree-tabs'
+NeoBundle 'jistr/vim-nerdtree-tabs'
 :noremap <Leader>n :NERDTreeTabsToggle<CR>
 
 
 " ::::::::::::   NERD Commenter   ::::::::::::::
-Plugin 'scrooloose/nerdcommenter'
+NeoBundle 'scrooloose/nerdcommenter'
 
 
 " ::::::::::::   Surround   ::::::::::::::
-Plugin 'tpope/vim-surround'
+NeoBundle 'tpope/vim-surround'
 
 
 " ::::::::::::   SuperTab   ::::::::::::::
-Plugin 'ervandew/supertab'
+NeoBundle 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
 
 
 " ::::::::::::   FuGitive   ::::::::::::::
-Plugin 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-fugitive', {'augroup': 'fugitive'}
+
+
+" ::::::::::::   FuGitive   ::::::::::::::
+NeoBundle 'airblade/vim-gitgutter' 
 
 
 " ::::::::::::   Gundo   ::::::::::::::
-Plugin 'sjl/gundo.vim'
+NeoBundle 'sjl/gundo.vim'
 nnoremap <Leader>u :GundoToggle<CR>
 
 
 " ::::::::::::   EasyMotion   ::::::::::::::
-Plugin 'Lokaltog/vim-easymotion'
+NeoBundle 'Lokaltog/vim-easymotion'
 
 
-Plugin 'dangerousben/jsonval'
+NeoBundle 'dangerousben/jsonval'
 
 
 " ::::::::::::   Jedi (python)   :::::::::::::
-Plugin 'davidhalter/jedi-vim'
+NeoBundle 'davidhalter/jedi-vim'
 
 
 " ::::::::::::   YCM (code completion)   :::::::::::::
-"Plugin 'Valloric/YouCompleteMe'
+"NeoBundle 'Valloric/YouCompleteMe'
 
 
 " ::::::::::::   Syntastic   :::::::::::::
-Plugin 'scrooloose/syntastic'
+NeoBundle 'scrooloose/syntastic'
 let syntastic_enable_signs = 0
 let syntastic_auto_jump = 0
 set statusline+=%#warningmsg#
@@ -141,7 +141,7 @@ set statusline+=%*
 
 
  "::::::::::::   UltiSnips   :::::::::::::
-Plugin 'guns/ultisnips'
+NeoBundle 'guns/ultisnips'
 imap <C-l> <C-r>=UltiSnips_ListSnippets()<CR>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -149,46 +149,77 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 
 " ::::::::::::   delimitMate   :::::::::::::
-Plugin 'Raimondi/delimitMate'
+NeoBundle 'Raimondi/delimitMate'
 
 
-" ::::::::::::   PowerLine   ::::::::::::
-set rtp+=~/.vim/powerline/bindings/vim
+" ::::::::::::   Airline   :::::::::::::
+NeoBundle 'bling/vim-airline'
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'powerlineish'
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extenions#branch#enabled = 1
+
+
+" ::::::::::::   PowerLine   :::::::::::::
+"set rtp+=~/.vim/powerline/bindings/vim
 
 
 " ::::::::::::   Python Folding   :::::::::::::
-Plugin 'agrimaldi/SimpylFold'
+NeoBundle 'agrimaldi/SimpylFold'
 
 
 " ::::::::::::   Rainbow-Parenthesis   :::::::::::::::
-Plugin 'vim-scripts/Rainbow-Parenthesis'
+NeoBundle 'vim-scripts/Rainbow-Parenthesis'
 
 
 " ::::::::::::   vim-rooter   :::::::::::::::
-Plugin 'airblade/vim-rooter'
+NeoBundle 'airblade/vim-rooter'
+
+
+" ::::::::::::   Multiple Cursors   ::::::::::::::
+NeoBundle 'terryma/vim-multiple-cursors'
 
 
 " ::::::::::::   AutomaticLatexPlugin   :::::::::::::::
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
+NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 let g:LatexBox_latexmk_options = '-pvc -bibtex'
 let g:LatexBox_viewer = '/Applications/Skim.app/Contents/MacOS/Skim'
 let g:LatexBox_output_type = 'pdf'
 let g:LatexBox_autojump = 1
 
-" ::::::::::::   Arpeggio   ::::::::::::::
-Plugin 'kana/vim-arpeggio'
-call arpeggio#map('ivsc', '', 0, 'jk', '<Esc>')
 
 " ::::::::::::   Hardtime   ::::::::::::::
-Plugin 'takac/vim-hardtime'
+"NeoBundle 'takac/vim-hardtime'
+"let g:hardtime_default_on = 1
+"let g:hardtime_allow_different_key = 1
+"let g:hardtime_maxcount = 3
+
+
+" -----------------------------------  
+" |              Colors             |
+" -----------------------------------  
+"NeoBundle 'altercation/vim-colors-solarized'
+"let g:solarized_termcolors=256
+"let g:solarized_diffmode="high"
+
+NeoBundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+NeoBundle 'nanotech/jellybeans.vim'
+
+
+call neobundle#end()
+
+NeoBundleCheck
 
 
 filetype plugin indent on
-syntax on " syntax highlighting
-set background=dark
-colorscheme solarized
+syntax on
+set t_Co=256 " 256 colors
+"colorscheme Jellybeans
+colorscheme Tomorrow-Night
+"set background=dark
+"colorscheme solarized
 hi Normal ctermbg=NONE
-
+"highlight clear SignColumn
 
 
 " Misc settings ***************************************************************
