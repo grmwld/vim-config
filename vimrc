@@ -19,19 +19,19 @@
 " -----------------------------------------------------------------------------  
 
 if has('vim_starting')
-   set nocompatible
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
- endif
+    set nocompatible
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+    filetype off
+endif
 
 filetype off
 set encoding=utf-8
 set laststatus=2
-set timeoutlen=50
+set timeoutlen=400
 set ttyfast
 set clipboard=unnamed
 
 call neobundle#begin(expand('~/.vim/bundle/'))
-
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/vimproc.vim', {
@@ -68,10 +68,27 @@ let vimrplugin_assign = 0
 " |              Plug-ins           |
 " -----------------------------------  
 "
+
+" ::::::::::::   The Silver Searcher   :::::::::::::
+NeoBundle 'rking/ag.vim'
+
+
 " ::::::::::::   Ctrl-P  :::::::::::::::
 NeoBundle 'kien/ctrlp.vim'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_map = '<Leader>p'
+
+
+" ::::::::::::   Unite   :::::::::::::::
+"NeoBundle 'Shougo/unite.vim'
+"NeoBundle 'Shougo/unite-outline'
+"NeoBundle 'tsukkee/unite-tag'
+"let g:unite_source_history_yank_enable = 1
+"if executable('ag')
+    "let g:unite_source_grep_command = 'ag'
+    "let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+    "let g:unite_source_grep_recursive_opt = ''
+"endif
 
 
 " ::::::::::::   TagBar   ::::::::::::::
@@ -82,7 +99,7 @@ nnoremap <Leader>t :TagbarToggle<CR>
 
 
 " ::::::::::::   NERDTree   :::::::::::::::
-NeoBundle 'scrooloose/nerdtree', { 'augroup' : 'NERDTreeHijackNetrw'}
+NeoBundle 'scrooloose/nerdtree', 
 let NERDTreeHijackNetrw=1 " User instead of Netrw when doing an edit /foobar
 let NERDTreeMouseMode=1 " Single click for everything
 NeoBundle 'jistr/vim-nerdtree-tabs'
@@ -99,7 +116,7 @@ NeoBundle 'tpope/vim-surround'
 
 " ::::::::::::   SuperTab   ::::::::::::::
 NeoBundle 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
 
 
@@ -154,10 +171,20 @@ NeoBundle 'Raimondi/delimitMate'
 
 " ::::::::::::   Airline   :::::::::::::
 NeoBundle 'bling/vim-airline'
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
 let g:airline_theme = 'powerlineish'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extenions#branch#enabled = 1
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_symbols.branch = '⭠'
+let g:airline_symbols.readonly = '⭤'
+let g:airline_symbols.linenr = '⭡'
 
 
 " ::::::::::::   PowerLine   :::::::::::::
@@ -178,6 +205,10 @@ NeoBundle 'airblade/vim-rooter'
 
 " ::::::::::::   Multiple Cursors   ::::::::::::::
 NeoBundle 'terryma/vim-multiple-cursors'
+
+
+" ::::::::::::   Narrowing   :::::::::::::
+NeoBundle 'chrisbra/NrrwRgn'
 
 
 " ::::::::::::   AutomaticLatexPlugin   :::::::::::::::
@@ -203,12 +234,11 @@ let g:LatexBox_autojump = 1
 "let g:solarized_diffmode="high"
 
 NeoBundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-NeoBundle 'nanotech/jellybeans.vim'
 
 
 call neobundle#end()
-
 NeoBundleCheck
+
 
 
 filetype plugin indent on
@@ -468,6 +498,25 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 " Hard to type *****************************************************************
 " reselect last selected chunk
 nnoremap <leader>V V`]
+
+
+" Unite
+"call unite#filters#matcher_default#use(['matcher_fuzzy'])
+"call unite#filters#sorter_default#use(['sorter_rank'])
+"call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+  "\ 'ignore_pattern', join([
+  "\ '\.git/',
+  "\ '\.sass-cache/',
+  "\ '\vendor/',
+  "\ '\node_modules/',
+  "\ ], '\|'))
+"nnoremap [unite] <Nop>
+"nmap <space> [unite]
+"nnoremap [unite]f :Unite -start-insert file_rec<CR>
+"nnoremap [unite]g :Unite grep:.<CR>
+"nnoremap [unite]d :Unite grep:.:-s:\(TODO\|FIXME\)<CR>
+"nnoremap [unite]o :Unite -start-insert -auto-preview outline<CR>
+"nnoremap [unite]y :Unite -no-split history/yank<cr>
 
 
 
