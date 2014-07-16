@@ -349,16 +349,6 @@ let python_highlight_space_errors=1
 let g:load_doxygen_syntax=1
 
 
-" Status Line *****************************************************************
-set showcmd
-set wildmenu
-set wildmode=list:longest
-set ruler " Show ruler
-"set ch=2 " Make command line two lines high
-"match LongLineWarning '\%120v.*' " Error format when a line is longer than 120
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-
-
 " Line Wrapping ***************************************************************
 set nowrap
 set linebreak  " Wrap at word
@@ -527,7 +517,6 @@ nnoremap <leader>V V`]
 
 " Mac *************************************************************************
 if has("mac")
-    
     " Clipboard interaction
     nnoremap <C-y> :w !pbcopy<CR><CR>
     vnoremap <C-y> :w !pbcopy<CR><CR>
@@ -538,7 +527,6 @@ endif
  
 " Linux ***********************************************************************
 if has("unix")
-
     nnoremap <C-y> "+y
     vnoremap <C-y> "+y
     nnoremap <C-p> "+p
@@ -568,10 +556,3 @@ endif
   " do something
 "endif
 
-" Example .vimrc.local:
-
-"call Tabstyle_tabs()
-"colorscheme ir_dark
-"match LongLineWarning '\%120v.*'
-
-"autocmd User ~/git/some_folder/* call Tabstyle_spaces() | let g:force_xhtml=1
