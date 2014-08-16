@@ -60,6 +60,7 @@ NeoBundle 'kelan/gyp.vim'
 NeoBundle 'vim-scripts/Vim-R-plugin'
 NeoBundle 'JuliaLang/julia-vim'
 "NeoBundle 'fatih/vim-go'
+NeoBundle 'vim-scripts/plist.vim'
 let vimrplugin_screenplugin = 0
 let vimrplugin_assign = 0
 
@@ -115,13 +116,28 @@ NeoBundle 'tpope/vim-surround'
 
 
 " ::::::::::::   SuperTab   ::::::::::::::
-NeoBundle 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
+"NeoBundle 'ervandew/supertab'
+"let g:SuperTabDefaultCompletionType = 'context'
+"let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
 
 
 " ::::::::::::   FuGitive   ::::::::::::::
 NeoBundle 'tpope/vim-fugitive', {'augroup': 'fugitive'}
+nnoremap <Leader>ga :Git add %:p<CR><CR>
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gc :Gcommit -v -q<CR>
+nnoremap <Leader>gt :Gcommit -v -q %:p<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>ge :Gedit<CR>
+nnoremap <Leader>gr :Gread<CR>
+nnoremap <Leader>gw :Gwrite<CR><CR>
+nnoremap <Leader>gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <Leader>gp :Ggrep<Space>
+nnoremap <Leader>gm :Gmove<Space>
+nnoremap <Leader>gb :Git branch<Space>
+nnoremap <Leader>go :Git checkout<Space>
+nnoremap <Leader>gps :Dispatch! git push<CR>
+nnoremap <Leader>gpl :Dispatch! git pull<CR>
 
 
 " ::::::::::::   FuGitive   ::::::::::::::
@@ -140,12 +156,18 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'dangerousben/jsonval'
 
 
+" ::::::::::::   Neocomplete   :::::::::::::
+"NeoBundle 'Shougo/neocomplete.vim'
+
+
 " ::::::::::::   Jedi (python)   :::::::::::::
-NeoBundle 'davidhalter/jedi-vim'
+"NeoBundle 'davidhalter/jedi-vim'
 
 
 " ::::::::::::   YCM (code completion)   :::::::::::::
-"NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'Valloric/YouCompleteMe'
+let g:ycm_autoclose_preview_window_after_completion=1
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
 " ::::::::::::   Syntastic   :::::::::::::
