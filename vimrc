@@ -1,4 +1,4 @@
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 " |                            VIM Settings                                   |
 " |                   (see gvimrc for gui vim settings)                       |
 " |                                                                           |
@@ -16,7 +16,7 @@
 " |   :call Tabstyle_spaces = set tab to 2 spaces                             |
 " |                                                                           |
 " | Put machine/user specific settings in ~/.vimrc.local                      |
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 
 if has('vim_starting')
     set nocompatible
@@ -50,9 +50,9 @@ NeoBundle 'Shougo/vimproc.vim', {
 " ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 "
-" -----------------------------------  
+" -----------------------------------
 " |       File types support        |
-" -----------------------------------  
+" -----------------------------------
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'vim-scripts/JSON.vim'
 NeoBundle 'plasticboy/vim-markdown'
@@ -65,9 +65,9 @@ let vimrplugin_screenplugin = 0
 let vimrplugin_assign = 0
 
 
-" -----------------------------------  
+" -----------------------------------
 " |              Plug-ins           |
-" -----------------------------------  
+" -----------------------------------
 "
 
 " ::::::::::::   The Silver Searcher   :::::::::::::
@@ -100,7 +100,7 @@ nnoremap <Leader>t :TagbarToggle<CR>
 
 
 " ::::::::::::   NERDTree   :::::::::::::::
-NeoBundle 'scrooloose/nerdtree', 
+NeoBundle 'scrooloose/nerdtree',
 let NERDTreeHijackNetrw=1 " User instead of Netrw when doing an edit /foobar
 let NERDTreeMouseMode=1 " Single click for everything
 NeoBundle 'jistr/vim-nerdtree-tabs'
@@ -116,9 +116,9 @@ NeoBundle 'tpope/vim-surround'
 
 
 " ::::::::::::   SuperTab   ::::::::::::::
-"NeoBundle 'ervandew/supertab'
-"let g:SuperTabDefaultCompletionType = 'context'
-"let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
+NeoBundle 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
 
 
 " ::::::::::::   FuGitive   ::::::::::::::
@@ -141,7 +141,7 @@ nnoremap <Leader>gpl :Dispatch! git pull<CR>
 
 
 " ::::::::::::   FuGitive   ::::::::::::::
-NeoBundle 'airblade/vim-gitgutter' 
+NeoBundle 'airblade/vim-gitgutter'
 
 
 " ::::::::::::   Gundo   ::::::::::::::
@@ -156,18 +156,25 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'dangerousben/jsonval'
 
 
-" ::::::::::::   Neocomplete   :::::::::::::
-"NeoBundle 'Shougo/neocomplete.vim'
-
-
 " ::::::::::::   Jedi (python)   :::::::::::::
-"NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'davidhalter/jedi-vim'
+let g:jedi#auto_vim_configuration = 1
+let g:jedi#completions_enabled = 0
+let g:jedi#popup_select_first = 0
+
+
+" ::::::::::::   Neocomplete   :::::::::::::
+NeoBundle 'Shougo/neocomplete.vim'
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#enable_auto_select = 0
 
 
 " ::::::::::::   YCM (code completion)   :::::::::::::
-NeoBundle 'Valloric/YouCompleteMe'
-let g:ycm_autoclose_preview_window_after_completion=1
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"NeoBundle 'Valloric/YouCompleteMe'
+"let g:ycm_autoclose_preview_window_after_completion=1
+"nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
 " ::::::::::::   Syntastic   :::::::::::::
@@ -248,9 +255,9 @@ let g:LatexBox_autojump = 1
 "let g:hardtime_maxcount = 3
 
 
-" -----------------------------------  
+" -----------------------------------
 " |              Colors             |
-" -----------------------------------  
+" -----------------------------------
 "NeoBundle 'altercation/vim-colors-solarized'
 "let g:solarized_termcolors=256
 "let g:solarized_diffmode="high"
@@ -278,7 +285,7 @@ hi Normal ctermbg=NONE
 set backspace=indent,eol,start
 set matchpairs+=<:>
 set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
-set nofoldenable " Turn off folding 
+set nofoldenable " Turn off folding
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<CR>
 " printing
 set pdev=pdf
@@ -357,7 +364,7 @@ set cursorcolumn
 " Searching *******************************************************************
 set hlsearch  " highlight search
 set incsearch  " Incremental search, search as you type
-set ignorecase " Ignore case when searching 
+set ignorecase " Ignore case when searching
 set smartcase " Ignore case when searching lowercase
 set gdefault
 set showmatch
@@ -504,7 +511,7 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 " May require ruby compiled in
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete 
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 
 
 " Hard to type *****************************************************************
@@ -532,10 +539,10 @@ nnoremap <leader>V V`]
 
 
 
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 " |                             OS Specific                                   |
 " |                      (GUI stuff goes in gvimrc)                           |
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 
 " Mac *************************************************************************
 if has("mac")
@@ -546,29 +553,29 @@ if has("mac")
     vnoremap <C-p> :w !pbpaste<CR><CR>
 
 endif
- 
+
 " Linux ***********************************************************************
 if has("unix")
     nnoremap <C-y> "+y
     vnoremap <C-y> "+y
     nnoremap <C-p> "+p
     vnoremap <C-p> "+p
-        
+
 endif
 
 
 
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 " |                               Startup                                     |
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 " Open NERDTree on start
-" autocmd VimEnter * exe 'NERDTree' | wincmd l 
+" autocmd VimEnter * exe 'NERDTree' | wincmd l
 
 
 
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 " |                               Host specific                               |
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
