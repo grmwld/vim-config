@@ -215,7 +215,7 @@ NeoBundleLazy 'alfredodeza/coveragepy.vim', {'autoload': {'filetypes': ['python'
 " Powerful and advanced Snippets tool
 NeoBundle 'SirVer/ultisnips'
 " Snippets for Ultisnips
-NeoBundle 'honza/vim-snippets'
+"NeoBundle 'honza/vim-snippets'
 
 " }}}
 
@@ -716,19 +716,13 @@ nnoremap <Leader>gP :Git! pull<CR>
 nnoremap <Leader>gi :Git!<Space>
 nnoremap <Leader>ge :Gedit<CR>
 nnoremap <Leader>gE :Gedit<Space>
-nnoremap <Leader>gl :exe "silent Glog <Bar> Unite -no-quit
-            \ quickfix"<CR>:redraw!<CR>
-nnoremap <Leader>gL :exe "silent Glog -- <Bar> Unite -no-quit
-            \ quickfix"<CR>:redraw!<CR>
+nnoremap <Leader>gl :exe "silent Glog <Bar> Unite -no-quit quickfix"<CR>:redraw!<CR>
+nnoremap <Leader>gL :exe "silent Glog -- <Bar> Unite -no-quit quickfix"<CR>:redraw!<CR>
 nnoremap <Leader>gt :!tig<CR>:redraw!<CR>
 nnoremap <Leader>gS :exe "silent !shipit"<CR>:redraw!<CR>
-nnoremap <Leader>gg :exe 'silent Ggrep -i '.input("Pattern: ")<Bar>Unite
-            \ quickfix -no-quit<CR>
-nnoremap <Leader>ggm :exe 'silent Glog --grep='.input("Pattern: ").' <Bar>
-            \Unite -no-quit quickfix'<CR>
-nnoremap <Leader>ggt :exe 'silent Glog -S='.input("Pattern: ").' <Bar>
-            \Unite -no-quit quickfix'<CR>
-
+nnoremap <Leader>gg :exe 'silent Ggrep -i '.input("Pattern: ")<Bar>Unite quickfix -no-quit<CR>
+nnoremap <Leader>ggm :exe 'silent Glog --grep='.input("Pattern: ").' <Bar>Unite -no-quit quickfix'<CR>
+nnoremap <Leader>ggt :exe 'silent Glog -S='.input("Pattern: ").' <Bar>Unite -no-quit quickfix'<CR>
 nnoremap <Leader>ggc :silent! Ggrep -i<Space>
 
 " for the diffmode
