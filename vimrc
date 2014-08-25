@@ -25,11 +25,6 @@ if has('vim_starting')
 endif
 
 filetype off
-set encoding=utf-8
-set laststatus=2
-set timeoutlen=400
-set ttyfast
-set clipboard=unnamed
 
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -43,6 +38,30 @@ NeoBundle 'Shougo/vimproc.vim', {
       \    },
       \ }
 
+" Shougo's way {{{
+
+NeoBundle 'Shougo/unite.vim'
+" Unite sources
+NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
+NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
+NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload':{'unite_sources':'colorscheme'}}
+NeoBundleLazy 'ujihisa/unite-locate', {'autoload':{'unite_sources':'locate'}}
+NeoBundleLazy 'thinca/vim-unite-history', { 'autoload' : { 'unite_sources':['history/command', 'history/search']}}
+NeoBundleLazy 'osyo-manga/unite-filetype', { 'autoload' : {'unite_sources':'filetype', }}
+NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources':['quickfix', 'location_list']}}
+NeoBundleLazy 'osyo-manga/unite-fold', {'autoload':{'unite_sources':'fold'}}
+NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}}
+NeoBundleLazy 'Shougo/neomru.vim', {'autoload':{'unite_sources':['file_mru', 'directory_mru']}}
+" File explorer (needed where ranger is not available)
+NeoBundleLazy 'Shougo/vimfiler', {'autoload' : { 'commands' : ['VimFiler']}}
+" Unite plugin that provides command line completition
+NeoBundle 'majkinetor/unite-cmdmatch'
+" Unite plugin that provides spell suggestions
+NeoBundle 'kopischke/unite-spell-suggest'
+
+" }}}
+
+
 " ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 " :::                                                    :::
 " :::                      Bundles                       :::
@@ -55,7 +74,6 @@ NeoBundle 'Shougo/vimproc.vim', {
 " -----------------------------------
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'vim-scripts/JSON.vim'
-NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kelan/gyp.vim'
 NeoBundle 'vim-scripts/Vim-R-plugin'
 NeoBundle 'JuliaLang/julia-vim'
@@ -80,10 +98,6 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_map = '<Leader>p'
 
 
-" ::::::::::::   Unite   :::::::::::::::
-"NeoBundle 'Shougo/unite.vim'
-"NeoBundle 'Shougo/unite-outline'
-"NeoBundle 'tsukkee/unite-tag'
 "let g:unite_source_history_yank_enable = 1
 "if executable('ag')
     "let g:unite_source_grep_command = 'ag'
@@ -120,8 +134,8 @@ NeoBundle 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
 
+" Git {{{
 
-" ::::::::::::   FuGitive   ::::::::::::::
 NeoBundle 'tpope/vim-fugitive', {'augroup': 'fugitive'}
 nnoremap <Leader>ga :Git add %:p<CR><CR>
 nnoremap <Leader>gs :Gstatus<CR>
@@ -138,19 +152,78 @@ nnoremap <Leader>gb :Git branch<Space>
 nnoremap <Leader>go :Git checkout<Space>
 nnoremap <Leader>gps :Dispatch! git push<CR>
 nnoremap <Leader>gpl :Dispatch! git pull<CR>
-
-
-" ::::::::::::   FuGitive   ::::::::::::::
+" Git gutter
 NeoBundle 'airblade/vim-gitgutter'
+" Git viewer
+NeoBundleLazy 'gregsexton/gitv', {'depends':['tpope/vim-fugitive'], 'autoload':{'commands':'Gitv'}}
+" Browse GitHub events in Vim
+NeoBundle 'joedicastro/vim-github-dashboard'
+
+" }}}
 
 
-" ::::::::::::   Gundo   ::::::::::::::
-NeoBundle 'sjl/gundo.vim'
-nnoremap <Leader>u :GundoToggle<CR>
+" Markdown & reStructuredText {{{
+
+" Markdown Syntax
+NeoBundleLazy 'joedicastro/vim-markdown'
+" Makes a Markdown Extra preview into the browser
+NeoBundleLazy 'joedicastro/vim-markdown-extra-preview'
+" reStructuredText in vim. Your personal Wiki in RST
+NeoBundleLazy 'Rykka/riv.vim', {'autoload': {'filetypes': ['rst']}} 
+
+" }}}
 
 
-" ::::::::::::   EasyMotion   ::::::::::::::
+" Linux tools {{{
+
+" A diff tool for directories
+NeoBundleLazy 'joedicastro/DirDiff.vim', { 'autoload': { 'commands' : 'DirDiff'}}
+" Hexadecimal editor
+NeoBundle 'Shougo/vinarise.vim'
+
+" }}}
+
+
+" Text edition {{{
+
+" easy motion
 NeoBundle 'Lokaltog/vim-easymotion'
+" multiple curosors
+NeoBundle 'terryma/vim-multiple-cursors'
+" Autocompletion of (, [, {, ', ", ...
+NeoBundle 'delimitMate.vim'
+" Smart and fast date changer
+NeoBundle 'tpope/vim-speeddating'
+" to surround vim objects with a pair of identical chars
+NeoBundle 'tpope/vim-surround'
+" extend repetitions by the 'dot' key
+NeoBundle 'tpope/vim-repeat'
+" toggle comments
+NeoBundle 'tpope/vim-commentary'
+" smart digraphs insertion
+NeoBundle 'Rykka/easydigraph.vim'
+" browse the vim undo tree
+NeoBundleLazy 'sjl/gundo.vim', { 'autoload' : {'commands': 'GundoToggle'}}
+nnoremap <Leader>u :GundoToggle<CR>
+" to insert lorem ipsum blocks
+NeoBundleLazy 'vim-scripts/loremipsum', { 'autoload' :
+            \ { 'commands' : 'Loremipsum'}}
+" reveals all the character info, Unicode included
+NeoBundle 'tpope/vim-characterize'
+" transpose lines and text blocks
+NeoBundleLazy 'salsifis/vim-transpose', { 'autoload' :
+            \ { 'commands' : 'Transpose'}}
+" marks admin
+NeoBundle 'kshenoy/vim-signature'
+" text-objects
+NeoBundle 'kana/vim-textobj-entire' " ae, ie
+NeoBundle 'kana/vim-textobj-indent' " ai, ii, aI, iI
+NeoBundle 'kana/vim-textobj-lastpat' " a/, i/, a?, i?
+NeoBundle 'kana/vim-textobj-line' " al, il
+NeoBundle 'kana/vim-textobj-underscore' " a_, i_
+NeoBundle 'kana/vim-textobj-user'
+
+" }}}
 
 
 NeoBundle 'dangerousben/jsonval'
@@ -194,11 +267,10 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 
-" ::::::::::::   delimitMate   :::::::::::::
-NeoBundle 'Raimondi/delimitMate'
 
+" GUI {{{
 
-" ::::::::::::   Airline   :::::::::::::
+" A better looking status line
 NeoBundle 'bling/vim-airline'
 "let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
@@ -215,9 +287,13 @@ let g:airline_symbols.branch = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
 
+" Zooms a window
+NeoBundleLazy 'vim-scripts/zoomwintab.vim', {'autoload' :
+            \{'commands' : 'ZoomWinTabToggle'}}
+" easily window resizing
+NeoBundle 'jimsei/winresizer'
 
-" ::::::::::::   PowerLine   :::::::::::::
-"set rtp+=~/.vim/powerline/bindings/vim
+" }}}
 
 
 " ::::::::::::   Python Folding   :::::::::::::
@@ -233,7 +309,6 @@ NeoBundle 'airblade/vim-rooter'
 
 
 " ::::::::::::   Multiple Cursors   ::::::::::::::
-NeoBundle 'terryma/vim-multiple-cursors'
 
 
 " ::::::::::::   Narrowing   :::::::::::::
@@ -270,7 +345,15 @@ NeoBundleCheck
 
 
 
+
+" Basic options {{{
+
+scriptencoding utf-8
 filetype plugin indent on
+set encoding=utf-8
+set laststatus=2
+set timeoutlen=400
+set clipboard=unnamed
 syntax on
 set t_Co=256 " 256 colors
 "colorscheme Jellybeans
@@ -279,20 +362,28 @@ colorscheme Tomorrow-Night
 "colorscheme solarized
 hi Normal ctermbg=NONE
 "highlight clear SignColumn
-
-
-" Misc settings ***************************************************************
-set backspace=indent,eol,start
+set cursorline                  " highlight the line under the cursor
+set ttyfast                     " better screen redraw
+set title                       " set the terminal title to the current file
+set showcmd                     " shows partial commands
+set hidden                      " hide the inactive buffers
+set ruler                       " sets a permanent rule
+set lazyredraw                  " only redraws if it is needed
+set autoread                    " update a open file edited outside of Vim
+set backspace=indent,eol,start  " defines the backspace key behavior
+set virtualedit=all             " to edit where there is no actual character
 set matchpairs+=<:>
-set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
-set nofoldenable " Turn off folding
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<CR>
+set vb t_vb=                    " Turn off bell, this could be more annoying, but I'm not sure how
+set nofoldenable                " Turn off folding
+"nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<CR>
 " printing
 set pdev=pdf
 set printoptions=paper:A4,syntax:y,wrap:y,number:y
 
+" }}}
 
-" Line numbering
+" Line numbering {{{
+
 set relativenumber
 "set number
 autocmd InsertEnter * :set number
@@ -308,6 +399,21 @@ function! NumberToggle()
     endif
 endfunc
 nnoremap <C-n> :call NumberToggle()<cr>
+
+" }}}
+
+
+" Searching {{{
+
+set hlsearch  " highlight search
+set incsearch  " Incremental search, search as you type
+set ignorecase " Ignore case when searching
+set smartcase " Ignore case when searching lowercase
+set gdefault
+set showmatch
+nnoremap <leader><space> :noh<cr>
+
+" }}}
 
 
 " Tabs ************************************************************************
@@ -361,14 +467,6 @@ set cursorline
 set cursorcolumn
 
 
-" Searching *******************************************************************
-set hlsearch  " highlight search
-set incsearch  " Incremental search, search as you type
-set ignorecase " Ignore case when searching
-set smartcase " Ignore case when searching lowercase
-set gdefault
-set showmatch
-nnoremap <leader><space> :noh<cr>
 
 
 " Colors **********************************************************************
