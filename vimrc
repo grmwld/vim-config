@@ -98,14 +98,6 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_map = '<Leader>p'
 
 
-"let g:unite_source_history_yank_enable = 1
-"if executable('ag')
-    "let g:unite_source_grep_command = 'ag'
-    "let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-    "let g:unite_source_grep_recursive_opt = ''
-"endif
-
-
 " ::::::::::::   TagBar   ::::::::::::::
 NeoBundle 'majutsushi/tagbar'
 let g:tagbar_left = 1
@@ -122,11 +114,6 @@ NeoBundle 'jistr/vim-nerdtree-tabs'
 
 
 " ::::::::::::   NERD Commenter   ::::::::::::::
-NeoBundle 'scrooloose/nerdcommenter'
-
-
-" ::::::::::::   Surround   ::::::::::::::
-NeoBundle 'tpope/vim-surround'
 
 
 " ::::::::::::   SuperTab   ::::::::::::::
@@ -199,7 +186,8 @@ NeoBundle 'tpope/vim-surround'
 " extend repetitions by the 'dot' key
 NeoBundle 'tpope/vim-repeat'
 " toggle comments
-NeoBundle 'tpope/vim-commentary'
+NeoBundle 'scrooloose/nerdcommenter'
+"NeoBundle 'tpope/vim-commentary'
 " smart digraphs insertion
 NeoBundle 'Rykka/easydigraph.vim'
 " browse the vim undo tree
@@ -226,11 +214,44 @@ NeoBundle 'kana/vim-textobj-user'
 " }}}
 
 
+" Python {{{
+
+" Autocompletion
+NeoBundle 'Shougo/neocomplete.vim'
+" A Python plugin
+"NeoBundleLazy 'klen/python-mode', {'autoload': {'filetypes': ['python']}}
+NeoBundleLazy 'davidhalter/jedi-vim', {'autoload': {'filetypes': ['python']}}
+" Admin virtualenvs
+NeoBundle 'jmcantrell/vim-virtualenv'
+" Show indent lines
+NeoBundleLazy 'Yggdroot/indentLine', {'autoload': {'filetypes': ['python']}}
+" Show reports from coverage.py
+NeoBundleLazy 'alfredodeza/coveragepy.vim', {'autoload': {'filetypes': ['python']}}
+" Sort imports
+ NeoBundle 'fisadev/vim-isort', {'autoload': {'filetypes': ['python']}}
+" }}}
+
+" Code Snippets {{{
+
+" Powerful and advanced Snippets tool
+NeoBundle 'SirVer/ultisnips'
+" Snippets for Ultisnips
+NeoBundle 'honza/vim-snippets'
+
+" }}}
+
+" Syntax {{{
+
+NeoBundleLazy 'elzr/vim-json', {'filetypes' : 'json'}
+NeoBundleLazy 'vim-scripts/po.vim--gray', {'autoload': {'filetypes': ['po']}}
+NeoBundleLazy 'joedicastro/vim-pentadactyl', {'autoload': {'filetypes': ['pentadactyl']}}
+NeoBundle 'scrooloose/syntastic'
+
+
 NeoBundle 'dangerousben/jsonval'
 
 
 " ::::::::::::   Jedi (python)   :::::::::::::
-NeoBundle 'davidhalter/jedi-vim'
 let g:jedi#auto_vim_configuration = 1
 let g:jedi#completions_enabled = 0
 let g:jedi#popup_select_first = 0
