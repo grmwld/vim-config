@@ -72,14 +72,14 @@ NeoBundle 'kopischke/unite-spell-suggest'
 " -----------------------------------
 " |       File types support        |
 " -----------------------------------
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'kelan/gyp.vim'
-NeoBundle 'vim-scripts/Vim-R-plugin'
-NeoBundle 'JuliaLang/julia-vim'
+"NeoBundle 'pangloss/vim-javascript'
+"NeoBundle 'kelan/gyp.vim'
+"NeoBundle 'vim-scripts/Vim-R-plugin'
+"NeoBundle 'JuliaLang/julia-vim'
 "NeoBundle 'fatih/vim-go'
-NeoBundle 'vim-scripts/plist.vim'
-let vimrplugin_screenplugin = 0
-let vimrplugin_assign = 0
+"NeoBundle 'vim-scripts/plist.vim'
+"let vimrplugin_screenplugin = 0
+"let vimrplugin_assign = 0
 
 
 " -----------------------------------
@@ -189,6 +189,7 @@ NeoBundle 'kana/vim-textobj-lastpat' " a/, i/, a?, i?
 NeoBundle 'kana/vim-textobj-line' " al, il
 NeoBundle 'kana/vim-textobj-underscore' " a_, i_
 NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'bps/vim-textobj-python'
 
 " }}}
 
@@ -394,6 +395,7 @@ set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 au FocusLost * :wa
+nnoremap <Leader>u :GundoToggle<CR>
 
 " }}}
 
@@ -486,20 +488,20 @@ nmap <silent><Leader>ew :call ToggleWrap()<CR>
 
 " Mouse {{{
 
-set mouse=a " Enable the mouse
-nnoremap <F12> :call ToggleMouse() <CR>
-function! ToggleMouse()
-    if &mouse == 'a'
-        set mouse=
-        set nonumber
-        echo "Mouse usage diabled"
-    else
-        set mouse=a
-        set number
-        echo "Mouse usage enabled"
-    endif
-endfunction
-behave xterm
+"set mouse=a " Enable the mouse
+"nnoremap <F12> :call ToggleMouse() <CR>
+"function! ToggleMouse()
+    "if &mouse == 'a'
+        "set mouse=
+        "set nonumber
+        "echo "Mouse usage diabled"
+    "else
+        "set mouse=a
+        "set number
+        "echo "Mouse usage enabled"
+    "endif
+"endfunction
+"behave xterm
 "set selectmode=mouse
 
 " }}}
@@ -785,6 +787,28 @@ let g:indentLine_color_term = 239
 
 " }}}
 
+" PythonMode {{{ -------------------------------------------------------------
+
+let g:jedi#auto_vim_configuration = 1
+let g:jedi#completions_enabled = 0
+let g:jedi#popup_select_first = 0
+
+nmap <silent><Leader>n :PymodeLint<CR>
+
+let g:pymode_breakpoint_bind = '<Leader>B'
+
+let g:pymode_lint = 1
+let g:pymode_lint_on_write = 0
+let g:pymode_lint_checkers = ['pylint', 'pep8', 'mccabe', 'pep257']
+let g:pymode_lint_ignore = ''
+let g:pymode_virtualenv = 0
+let g:pymode_rope = 1
+
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 1
+
+" }}}
+
 " Neocomplete {{{
 
 let g:neocomplete#enable_at_startup = 1
@@ -815,7 +839,7 @@ endfunction
 nnoremap <silent><Leader>ea :call ToggleNeoComplete()<CR>
    
 " Enable omni completion.
-":set completeopt=longest,menuone
+:set completeopt=longest,menuone
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -846,28 +870,6 @@ let g:neomru#directory_mru_path = $HOME.'/.vim/tmp/neomru/directory'
 
 " }}}
 
-" PythonMode {{{ -------------------------------------------------------------
-
-let g:jedi#auto_vim_configuration = 1
-let g:jedi#completions_enabled = 0
-let g:jedi#popup_select_first = 0
-
-nmap <silent><Leader>n :PymodeLint<CR>
-
-let g:pymode_breakpoint_bind = '<Leader>B'
-
-let g:pymode_lint = 1
-let g:pymode_lint_on_write = 0
-let g:pymode_lint_checkers = ['pylint', 'pep8', 'mccabe', 'pep257']
-let g:pymode_lint_ignore = ''
-let g:pymode_virtualenv = 0
-let g:pymode_rope = 1
-
-let g:pymode_rope_completion = 0
-let g:pymode_rope_complete_on_dot = 1
-
-" }}}
-
 " Syntastic {{{
 
 nmap <silent><Leader>N :SyntasticCheck<CR>:Errors<CR>
@@ -895,6 +897,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Unite {{{
 
+nmap <buffer> <ESC> <Plug>(unite_exit)
 " files
 nnoremap <silent><Leader>o :Unite -silent -start-insert file<CR>
 nnoremap <silent><Leader>O :Unite -silent -start-insert file_rec/async<CR>
