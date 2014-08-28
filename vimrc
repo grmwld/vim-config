@@ -87,26 +87,6 @@ NeoBundle 'kopischke/unite-spell-suggest'
 " -----------------------------------
 "
 
-" ::::::::::::   Ctrl-P  :::::::::::::::
-"NeoBundle 'kien/ctrlp.vim'
-"let g:ctrlp_cmd = 'CtrlP'
-"let g:ctrlp_map = '<Leader>p'
-
-
-" ::::::::::::   TagBar   ::::::::::::::
-NeoBundle 'majutsushi/tagbar'
-let g:tagbar_left = 1
-autocmd VimEnter *py nested :call tagbar#autoopen(1)
-nnoremap <Leader>t :TagbarToggle<CR>
-
-
-" ::::::::::::   NERDTree   :::::::::::::::
-NeoBundle 'scrooloose/nerdtree',
-let NERDTreeHijackNetrw=1 " User instead of Netrw when doing an edit /foobar
-let NERDTreeMouseMode=1 " Single click for everything
-NeoBundle 'jistr/vim-nerdtree-tabs'
-:noremap <Leader>n :NERDTreeTabsToggle<CR>
-
 
 " ::::::::::::   SuperTab   ::::::::::::::
 NeoBundle 'ervandew/supertab'
@@ -130,11 +110,11 @@ NeoBundle 'joedicastro/vim-github-dashboard'
 " Markdown & reStructuredText {{{
 
 " Markdown Syntax
-NeoBundleLazy 'joedicastro/vim-markdown'
+NeoBundle 'joedicastro/vim-markdown'
 " Makes a Markdown Extra preview into the browser
-NeoBundleLazy 'joedicastro/vim-markdown-extra-preview'
+NeoBundle 'suan/vim-instant-markdown'
 " reStructuredText in vim. Your personal Wiki in RST
-NeoBundleLazy 'Rykka/riv.vim', {'autoload': {'filetypes': ['rst']}} 
+NeoBundleLazy 'Rykka/riv.vim', {'autoload': {'filetypes': ['rst']}}
 
 " }}}
 
@@ -173,13 +153,11 @@ NeoBundle 'Rykka/easydigraph.vim'
 " browse the vim undo tree
 NeoBundleLazy 'sjl/gundo.vim', { 'autoload' : {'commands': 'GundoToggle'}}
 " to insert lorem ipsum blocks
-NeoBundleLazy 'vim-scripts/loremipsum', { 'autoload' :
-            \ { 'commands' : 'Loremipsum'}}
+NeoBundleLazy 'vim-scripts/loremipsum', { 'autoload' :{ 'commands' : 'Loremipsum'}}
 " reveals all the character info, Unicode included
 NeoBundle 'tpope/vim-characterize'
 " transpose lines and text blocks
-NeoBundleLazy 'salsifis/vim-transpose', { 'autoload' :
-            \ { 'commands' : 'Transpose'}}
+NeoBundleLazy 'salsifis/vim-transpose', { 'autoload' :{ 'commands' : 'Transpose'}}
 " marks admin
 NeoBundle 'kshenoy/vim-signature'
 " text-objects
@@ -189,7 +167,6 @@ NeoBundle 'kana/vim-textobj-lastpat' " a/, i/, a?, i?
 NeoBundle 'kana/vim-textobj-line' " al, il
 NeoBundle 'kana/vim-textobj-underscore' " a_, i_
 NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'bps/vim-textobj-python'
 
 " }}}
 
@@ -209,7 +186,9 @@ NeoBundleLazy 'Yggdroot/indentLine', {'autoload': {'filetypes': ['python']}}
 NeoBundleLazy 'alfredodeza/coveragepy.vim', {'autoload': {'filetypes': ['python']}}
 " Sort imports
  NeoBundle 'fisadev/vim-isort', {'autoload': {'filetypes': ['python']}}
+
 " }}}
+
 
 " Code Snippets {{{
 
@@ -220,38 +199,26 @@ NeoBundle 'SirVer/ultisnips'
 
 " }}}
 
+
 " Syntax {{{
 
 NeoBundleLazy 'elzr/vim-json', {'filetypes' : 'json'}
 NeoBundleLazy 'joedicastro/vim-pentadactyl', {'autoload': {'filetypes': ['pentadactyl']}}
 NeoBundle 'scrooloose/syntastic'
 
+" }}}
 
 
 " GUI {{{
 
 " A better looking status line
 NeoBundle 'bling/vim-airline'
-
 " Zooms a window
-NeoBundleLazy 'vim-scripts/zoomwintab.vim', {'autoload' :
-            \{'commands' : 'ZoomWinTabToggle'}}
+NeoBundleLazy 'vim-scripts/zoomwintab.vim', {'autoload' :{'commands' : 'ZoomWinTabToggle'}}
 " easily window resizing
 NeoBundle 'jimsei/winresizer'
 
 " }}}
-
-
-" ::::::::::::   Rainbow-Parenthesis   :::::::::::::::
-NeoBundle 'vim-scripts/Rainbow-Parenthesis'
-
-
-" ::::::::::::   vim-rooter   :::::::::::::::
-NeoBundle 'airblade/vim-rooter'
-
-
-" ::::::::::::   Narrowing   :::::::::::::
-NeoBundle 'chrisbra/NrrwRgn'
 
 
 " ::::::::::::   AutomaticLatexPlugin   :::::::::::::::
@@ -261,12 +228,6 @@ let g:LatexBox_viewer = '/Applications/Skim.app/Contents/MacOS/Skim'
 let g:LatexBox_output_type = 'pdf'
 let g:LatexBox_autojump = 1
 
-
-" ::::::::::::   Hardtime   ::::::::::::::
-"NeoBundle 'takac/vim-hardtime'
-"let g:hardtime_default_on = 1
-"let g:hardtime_allow_different_key = 1
-"let g:hardtime_maxcount = 3
 
 
 " -----------------------------------
@@ -484,24 +445,24 @@ endfunction
 nmap <silent><Leader>ew :call ToggleWrap()<CR>
 
 " }}}
-                          
+
 
 " Mouse {{{
 
-"set mouse=a " Enable the mouse
-"nnoremap <F12> :call ToggleMouse() <CR>
-"function! ToggleMouse()
-    "if &mouse == 'a'
-        "set mouse=
-        "set nonumber
-        "echo "Mouse usage diabled"
-    "else
-        "set mouse=a
-        "set number
-        "echo "Mouse usage enabled"
-    "endif
-"endfunction
-"behave xterm
+set mouse=a " Enable the mouse
+nnoremap <F12> :call ToggleMouse() <CR>
+function! ToggleMouse()
+    if &mouse == 'a'
+        set mouse=
+        set nonumber
+        echo "Mouse usage diabled"
+    else
+        set mouse=a
+        set number
+        echo "Mouse usage enabled"
+    endif
+endfunction
+behave xterm
 "set selectmode=mouse
 
 " }}}
@@ -566,7 +527,7 @@ map <Leader>y "*y
 map <Leader>p "*p
 
 " toggle paste mode
-:set pastetoggle=<F3>
+set pastetoggle=<F3>
 
 " }}}
 
@@ -604,7 +565,7 @@ cmap w!! w !sudo tee % >/dev/null<CR>:e!<CR><CR>
 "set listchars=trail:.,tab:>-,eol:$
 set listchars=tab:→\ ,eol:↵,trail:·,extends:↷,precedes:↶
 set nolist
-:noremap <Leader>eh :set list!<CR>
+noremap <Leader>eh :set list!<CR>
 
 " Delete trailing whitespaces {{{
 
@@ -787,7 +748,13 @@ let g:indentLine_color_term = 239
 
 " }}}
 
-" PythonMode {{{ -------------------------------------------------------------
+" Markdown {{{
+
+"let g:instant_markdown_autostart = 0
+
+" }}}
+
+" PythonMode {{{
 
 let g:jedi#auto_vim_configuration = 1
 let g:jedi#completions_enabled = 0
@@ -822,7 +789,7 @@ let g:neocomplete#data_directory = $HOME.'/.vim/tmp/neocomplete'
 " disable the auto select feature by default to speed up writing without
 " obstacles (is optimal for certain situations)
 let g:neocomplete#enable_auto_select = 0
-                                        
+
 " toggle the auto select feature
 function! ToggleNeoComplete()
   if !g:neocomplete#disable_auto_complete && g:neocomplete#enable_auto_select
@@ -837,7 +804,7 @@ function! ToggleNeoComplete()
   endif
 endfunction
 nnoremap <silent><Leader>ea :call ToggleNeoComplete()<CR>
-   
+
 " Enable omni completion.
 :set completeopt=longest,menuone
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
@@ -895,22 +862,20 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+
 " Unite {{{
 
-nmap <buffer> <ESC> <Plug>(unite_exit)
 " files
 nnoremap <silent><Leader>o :Unite -silent -start-insert file<CR>
-nnoremap <silent><Leader>O :Unite -silent -start-insert file_rec/async<CR>
+nnoremap <silent><Leader>p :Unite -silent -start-insert file_rec/async<CR>
 nnoremap <silent><Leader>m :Unite -silent file_mru<CR>
 " buffers
 nnoremap <silent><Leader>b :Unite -silent buffer<CR>
 " tabs
 nnoremap <silent><Leader>B :Unite -silent tab<CR>
 " buffer search
-nnoremap <silent><Leader>f :Unite -silent -no-split -start-insert -auto-preview
-            \ line<CR>
-nnoremap <silent>[menu]8 :UniteWithCursorWord -silent -no-split -auto-preview
-            \ line<CR>
+nnoremap <silent><Leader>f :Unite -silent -no-split -start-insert -auto-preview line<CR>
+nnoremap <silent>[menu]8 :UniteWithCursorWord -silent -no-split -auto-preview line<CR>
 " yankring
 nnoremap <silent><Leader>i :Unite -silent history/yank<CR>
 " grep
@@ -918,11 +883,9 @@ nnoremap <silent><Leader>a :Unite -silent -no-quit grep<CR>
 " help
 nnoremap <silent> g<C-h> :UniteWithCursorWord -silent help<CR>
 " tasks
-nnoremap <silent><Leader>; :Unite -silent -toggle
-            \ grep:%::FIXME\|TODO\|NOTE\|XXX\|COMBAK\|@todo<CR>
+nnoremap <silent><Leader>; :Unite -silent -toggle grep:%::FIXME\|TODO\|NOTE\|XXX\|COMBAK\|@todo<CR>
 " outlines (also ctags)
-nnoremap <silent><Leader>t :Unite -silent -vertical -winwidth=40
-            \ -direction=topleft -toggle outline<CR>
+nnoremap <silent><Leader>t :Unite -silent -vertical -winwidth=40 -direction=topleft -toggle outline<CR>
 " junk files
   nnoremap <silent><Leader>d :Unite -silent junkfile/new junkfile<CR>
 
@@ -940,14 +903,14 @@ nnoremap <silent>[menu]u :Unite -silent -winheight=20 menu<CR>
 " files and dirs menu {{{
 let g:unite_source_menu_menus.files = {
     \ 'description' : '          files & dirs
-        \                                          ⌘ [space]o',
+        \                                          ⌘ ,o',
     \}
 let g:unite_source_menu_menus.files.command_candidates = [
     \['▷ open file                                                  ⌘ ,o',
         \'Unite -start-insert file'],
     \['▷ open more recently used files                              ⌘ ,m',
         \'Unite file_mru'],
-    \['▷ open file with recursive search                            ⌘ ,O',
+    \['▷ open file with recursive search                            ⌘ ,p',
         \'Unite -start-insert file_rec/async'],
     \['▷ edit new file',
         \'Unite file/new'],
@@ -974,14 +937,13 @@ let g:unite_source_menu_menus.files.command_candidates = [
     \['▷ open vimfiler                                              ⌘ ,X',
         \'VimFiler'],
     \]
-nnoremap <silent>[menu]o :Unite -silent -winheight=17 -start-insert
-            \ menu:files<CR>
+nnoremap <silent>[menu]o :Unite -silent -winheight=17 -start-insert menu:files<CR>
 " }}}
 
 " file searching menu {{{
 let g:unite_source_menu_menus.grep = {
     \ 'description' : '           search files
-        \                                          ⌘ [space]a',
+        \                                          ⌘ ,a',
     \}
 let g:unite_source_menu_menus.grep.command_candidates = [
     \['▷ grep (ag → ack → grep)                                     ⌘ ,a',
@@ -999,7 +961,7 @@ nnoremap <silent>[menu]a :Unite -silent menu:grep<CR>
 " buffers, tabs & windows menu {{{
 let g:unite_source_menu_menus.navigation = {
     \ 'description' : '     navigate by buffers, tabs & windows
-        \                   ⌘ [space]b',
+        \                   ⌘ ,b',
     \}
 let g:unite_source_menu_menus.navigation.command_candidates = [
     \['▷ buffers                                                    ⌘ ,b',
@@ -1033,12 +995,12 @@ nnoremap <silent>[menu]b :Unite -silent menu:navigation<CR>
 " buffer internal searching menu {{{
 let g:unite_source_menu_menus.searching = {
     \ 'description' : '      searchs inside the current buffer
-        \                     ⌘ [space]f',
+        \                     ⌘ ,f',
     \}
 let g:unite_source_menu_menus.searching.command_candidates = [
     \['▷ search line                                                ⌘ ,f',
         \'Unite -auto-preview -start-insert line'],
-    \['▷ search word under the cursor                               ⌘ [space]8',
+    \['▷ search word under the cursor                               ⌘ ,8',
         \'UniteWithCursorWord -no-split -auto-preview line'],
     \['▷ search outlines & tags (ctags)                             ⌘ ,t',
         \'Unite -vertical -winwidth=40 -direction=topleft -toggle outline'],
@@ -1061,7 +1023,7 @@ nnoremap <silent>[menu]f :Unite -silent menu:searching<CR>
 " yanks, registers & history menu {{{
 let g:unite_source_menu_menus.registers = {
     \ 'description' : '      yanks, registers & history
-        \                            ⌘ [space]i',
+        \                            ⌘ ,i',
     \}
 let g:unite_source_menu_menus.registers.command_candidates = [
     \['▷ yanks                                                      ⌘ ,i',
@@ -1083,7 +1045,7 @@ nnoremap <silent>[menu]i :Unite -silent menu:registers<CR>
 " spelling menu {{{
 let g:unite_source_menu_menus.spelling = {
     \ 'description' : '       spell checking
-        \                                        ⌘ [space]s',
+        \                                        ⌘ ,s',
     \}
 let g:unite_source_menu_menus.spelling.command_candidates = [
     \['▷ spell checking in French                                  ⌘ ,sf',
@@ -1107,7 +1069,7 @@ nnoremap <silent>[menu]s :Unite -silent menu:spelling<CR>
 " text edition menu {{{
 let g:unite_source_menu_menus.text = {
     \ 'description' : '           text edition
-        \                                          ⌘ [space]e',
+        \                                          ⌘ ,e',
     \}
 let g:unite_source_menu_menus.text.command_candidates = [
     \['▷ toggle search results highlight                            ⌘ ,eq',
@@ -1151,7 +1113,7 @@ nnoremap <silent>[menu]e :Unite -silent -winheight=20 menu:text <CR>
 " neobundle menu {{{
 let g:unite_source_menu_menus.neobundle = {
     \ 'description' : '      plugins administration with neobundle
-        \                 ⌘ [space]n',
+        \                 ⌘ ,n',
     \}
 let g:unite_source_menu_menus.neobundle.command_candidates = [
     \['▷ neobundle',
@@ -1185,7 +1147,7 @@ nnoremap <silent>[menu]n :Unite -silent -start-insert menu:neobundle<CR>
 " git menu {{{
 let g:unite_source_menu_menus.git = {
     \ 'description' : '            admin git repositories
-        \                                ⌘ [space]g',
+        \                                ⌘ ,g',
     \}
 let g:unite_source_menu_menus.git.command_candidates = [
     \['▷ tig                                                        ⌘ ,gt',
@@ -1249,7 +1211,7 @@ nnoremap <silent>[menu]g :Unite -silent -winheight=29 -start-insert menu:git<CR>
 " code menu {{{
 let g:unite_source_menu_menus.code = {
     \ 'description' : '           code tools
-        \                                            ⌘ [space]p',
+        \                                            ⌘ ,p',
     \}
 let g:unite_source_menu_menus.code.command_candidates = [
     \['▷ run python code                            (pymode)        ⌘ ,r',
@@ -1331,7 +1293,7 @@ nnoremap <silent>[menu]p :Unite -silent -winheight=42 menu:code<CR>
 " markdown menu {{{
 let g:unite_source_menu_menus.markdown = {
     \ 'description' : '       preview markdown extra docs
-        \                           ⌘ [space]k',
+        \                           ⌘ ,k',
     \}
 let g:unite_source_menu_menus.markdown.command_candidates = [
     \['▷ preview',
@@ -1341,11 +1303,11 @@ let g:unite_source_menu_menus.markdown.command_candidates = [
     \]
 nnoremap <silent>[menu]k :Unite -silent menu:markdown<CR>
 " }}}
- 
+
 " reST menu {{{
 let g:unite_source_menu_menus.rest = {
     \ 'description' : '           reStructuredText
-    \                                      ⌘ [space]r',
+    \                                      ⌘ ,r',
     \}
 let g:unite_source_menu_menus.rest.command_candidates = [
     \['▷ CheatSheet',
@@ -1355,11 +1317,11 @@ let g:unite_source_menu_menus.rest.command_candidates = [
     \]
 nnoremap <silent>[menu]r :Unite -silent menu:rest<CR>
 " }}}
- 
+
 " bookmarks menu {{{
 let g:unite_source_menu_menus.bookmarks = {
     \ 'description' : '      bookmarks
-        \                                             ⌘ [space]m',
+        \                                             ⌘ ,m',
     \}
 let g:unite_source_menu_menus.bookmarks.command_candidates = [
     \['▷ open bookmarks',
@@ -1420,7 +1382,7 @@ endfunction
 
 let g:unite_source_menu_menus.colorv = {
     \ 'description' : '         color management
-        \                                      ⌘ [space]c',
+        \                                      ⌘ ,c',
     \}
 let g:unite_source_menu_menus.colorv.command_candidates = [
     \['▷ open colorv                                                ⌘ ,cv',
@@ -1459,7 +1421,7 @@ nnoremap <silent>[menu]c :Unite -silent menu:colorv<CR>
 " vim menu {{{
 let g:unite_source_menu_menus.vim = {
     \ 'description' : '            vim
-        \                                                   ⌘ [space]v',
+        \                                                   ⌘ ,v',
     \}
 let g:unite_source_menu_menus.vim.command_candidates = [
     \['▷ choose colorscheme',
@@ -1494,7 +1456,11 @@ nnoremap <silent>[menu]v :Unite menu:vim -silent -start-insert<CR>
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom#source('file_mru,file_rec,file_rec/async,grep,locate',
-            \ 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/'], '\|'))
+        \ 'ignore_pattern', join([
+        \ '\.git/',
+        \ 'tmp/',
+        \ 'bundle/'
+        \ ], '\|'))
 
 let g:unite_source_history_yank_enable = 1
 let g:unite_enable_start_insert = 0
@@ -1548,31 +1514,6 @@ set numberwidth=4
 " Sets what is saved when you save a session
 "set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 
-
-
-" Omni Completion *************************************************************
-
-
-" Hard to type *****************************************************************
-
-
-" Unite
-"call unite#filters#matcher_default#use(['matcher_fuzzy'])
-"call unite#filters#sorter_default#use(['sorter_rank'])
-"call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-  "\ 'ignore_pattern', join([
-  "\ '\.git/',
-  "\ '\.sass-cache/',
-  "\ '\vendor/',
-  "\ '\node_modules/',
-  "\ ], '\|'))
-"nnoremap [unite] <Nop>
-"nmap <space> [unite]
-"nnoremap [unite]f :Unite -start-insert file_rec<CR>
-"nnoremap [unite]g :Unite grep:.<CR>
-"nnoremap [unite]d :Unite grep:.:-s:\(TODO\|FIXME\)<CR>
-"nnoremap [unite]o :Unite -start-insert -auto-preview outline<CR>
-"nnoremap [unite]y :Unite -no-split history/yank<cr>
 
 
 
