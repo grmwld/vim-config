@@ -333,7 +333,7 @@ function! NumberToggle()
         set number
     endif
 endfunc
-nnoremap <C-n> :call NumberToggle()<cr>
+"nnoremap <C-n> :call NumberToggle()<cr>
 
 " }}}
 
