@@ -42,7 +42,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 
 NeoBundle 'Shougo/unite.vim'
 " Unite sources
-NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
+"NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
 NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
 NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload':{'unite_sources':'colorscheme'}}
 NeoBundleLazy 'ujihisa/unite-locate', {'autoload':{'unite_sources':'locate'}}
@@ -131,6 +131,8 @@ NeoBundle 'Shougo/vinarise.vim'
 
 " Text edition {{{
 
+" TagBar
+NeoBundle 'majutsushi/tagbar'
 " easy motion
 NeoBundle 'Lokaltog/vim-easymotion'
 " multiple curosors
@@ -739,6 +741,13 @@ autocmd FileType github-dashboard call airline#add_statusline_func('GHDashboard'
 
 " }}}
 
+" Tagbar {{{
+
+let g:tagbar_left = 1
+nnoremap <Leader>t :TagbarToggle<CR>
+
+" }}}
+
 " indentLine {{{
 
 map <silent> <Leader>L :IndentLinesToggle<CR>
@@ -885,7 +894,7 @@ nnoremap <silent> g<C-h> :UniteWithCursorWord -silent help<CR>
 " tasks
 nnoremap <silent><Leader>; :Unite -silent -toggle grep:%::FIXME\|TODO\|NOTE\|XXX\|COMBAK\|@todo<CR>
 " outlines (also ctags)
-nnoremap <silent><Leader>t :Unite -silent -vertical -winwidth=40 -direction=topleft -toggle outline<CR>
+"nnoremap <silent><Leader>t :Unite -silent -vertical -winwidth=40 -direction=topleft -toggle outline<CR>
 " junk files
   nnoremap <silent><Leader>d :Unite -silent junkfile/new junkfile<CR>
 
